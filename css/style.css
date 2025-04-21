@@ -72,7 +72,7 @@ body {
 .hero_area {
   height: 100vh;
   background-color: #b5caee;
-  background-image: url(../images/Background\ 4.jpg);
+  background-image: url(../images/Background\ 1.png);
   background-size: cover;
 }
 
@@ -88,7 +88,8 @@ body {
   height: auto;
 }
 
-.header_section .container-fluid {
+.header_section .container-fluid { /* Fondo de menú */
+  background-color: #112c4eff;
   padding-right: 25px;
   padding-left: 25px;
 }
@@ -168,6 +169,7 @@ a:focus {
 .navbar-brand span {
   font-size: 24px;
   color: #ffffff;
+  
 }
 
 .custom_nav-container {
@@ -217,15 +219,16 @@ a:focus {
 .slider_section .detail-box a {
   display: inline-block;
   padding: 10px 55px;
-  background-color: #ffffff;
-  border: 1px solid #ffffff;
-  color: #000000;
+  background-color: #112c4eff;
+  border: 1px solid #112c4eff;
+  color: #ffffff;
   border-radius: 20px 20px 0 20px;
   margin-top: 35px;
 }
 
 .slider_section .detail-box a:hover {
-  background-color: transparent;
+  border: 1px solid #30b4bcd0;
+  background-color: #112c4eff;
   color: #ffffff;
 }
 
@@ -237,7 +240,7 @@ a:focus {
   width: 15px;
   height: 15px;
   background-color: transparent;
-  border: 3px solid #ffffff;
+  border: 3px solid #112c4eff;
   border-radius: 100%;
   opacity: 1;
 }
