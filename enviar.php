@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $mensaje = $_POST['mensaje'];
 
-    $para = "tucorreo@ejemplo.com";
-    $asunto = "Nuevo mensaje desde tu sitio web";
+    $para = "info@impulsagroup.com";
+    $asunto = "Nuevo mensaje desde la landing page de Impulsa Group";
 
     $contenido = "
     <html>
