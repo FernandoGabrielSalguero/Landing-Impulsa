@@ -55,16 +55,16 @@
                   <a class="nav-link" href="index.html"> Inicio <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about.html"> Sobre nosoros </a>
+                  <a class="nav-link" href="#sobre_nosotros"> Sobre nosoros </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="do.html"> ¿Que hacemos? </a>
+                  <a class="nav-link" href="#que_hacemos"> ¿Que hacemos? </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="portfolio.html"> Nuestros trabajos </a>
+                  <a class="nav-link" href="#nuestros_trabajos"> Nuestros trabajos </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact.html"> Contacto </a>
+                  <a class="nav-link" href="#contacto"> Contacto </a>
                 </li>
               </ul>
 
@@ -155,20 +155,24 @@
 
   <!-- do section -->
 
-  <section class="do_section layout_padding">
+  <section class="do_section layout_padding" id="que_hacemos">
     <div class="container">
       <div class="heading_container">
         <h2>
           ¿Que hacemos?
         </h2>
         <p>
-          En Impulsa combinamos el poder del análisis de datos, la inteligencia artificial y el desarrollo web para crear soluciones tecnológicas integrales.
+          En Impulsa combinamos el poder del análisis de datos, la inteligencia artificial y el desarrollo web para
+          crear soluciones tecnológicas integrales.
           <br>
           <br>
-          Aplicamos estas disciplinas de forma estratégica para transformar información en decisiones inteligentes, automatizar procesos clave y construir plataformas digitales a medida.
+          Aplicamos estas disciplinas de forma estratégica para transformar información en decisiones inteligentes,
+          automatizar procesos clave y construir plataformas digitales a medida.
           <br>
           <br>
-          Nuestro enfoque se centra en entender a fondo los desafíos de cada cliente y aplicar la tecnología con creatividad y precisión. No solo resolvemos problemas: generamos oportunidades reales de crecimiento, eficiencia y ventaja competitiva.
+          Nuestro enfoque se centra en entender a fondo los desafíos de cada cliente y aplicar la tecnología con
+          creatividad y precisión. No solo resolvemos problemas: generamos oportunidades reales de crecimiento,
+          eficiencia y ventaja competitiva.
         </p>
       </div>
       <div class="do_container">
@@ -217,7 +221,7 @@
 
   <!-- who section -->
 
-  <section class="who_section ">
+  <section class="who_section " id="sobre_nosotros">
     <div class="container">
       <div class="row">
         <div class="col-md-5">
@@ -233,10 +237,14 @@
               </h2>
             </div>
             <p>
-              Somos un equipo de jóvenes profesionales apasionados por la tecnología y la innovación. Nos motiva crear soluciones que marquen la diferencia, combinando creatividad, conocimiento técnico y compromiso con cada proyecto.
-              <br>  
-              <br>  
-              En Impulsa creemos en el poder de la colaboración y en poner todo nuestro talento al servicio de quienes confían en nosotros. Trabajamos con dedicación, visión estratégica y cercanía, construyendo relaciones sólidas con nuestros clientes y acompañándolos en su crecimiento.
+              Somos un equipo de jóvenes profesionales apasionados por la tecnología y la innovación. Nos motiva crear
+              soluciones que marquen la diferencia, combinando creatividad, conocimiento técnico y compromiso con cada
+              proyecto.
+              <br>
+              <br>
+              En Impulsa creemos en el poder de la colaboración y en poner todo nuestro talento al servicio de quienes
+              confían en nosotros. Trabajamos con dedicación, visión estratégica y cercanía, construyendo relaciones
+              sólidas con nuestros clientes y acompañándolos en su crecimiento.
             </p>
             <div>
               <!-- <a href="">
@@ -253,7 +261,7 @@
 
 
   <!-- work section -->
-  <section class="work_section layout_padding">
+  <section class="work_section layout_padding" id="nuestros_trabajos">
     <div class="container">
       <div class="heading_container">
         <h2>
@@ -412,7 +420,7 @@
 
   <!-- contact section -->
 
-  <section class="contact_section layout_padding">
+  <section class="contact_section layout_padding" id="contacto">
     <div class="container">
 
       <div class="heading_container">
@@ -425,23 +433,21 @@
           <div class="row">
             <div class="col-md-9 mx-auto">
               <div class="contact-form">
-                <form action="">
+                <form action="enviar.php" method="POST">
                   <div>
-                    <input type="text" placeholder="Nombre completo ">
+                    <input type="text" name="nombre" placeholder="Nombre completo" required>
                   </div>
                   <div>
-                    <input type="text" placeholder="Telefono de contacto">
+                    <input type="text" name="telefono" placeholder="Teléfono de contacto" required>
                   </div>
                   <div>
-                    <input type="email" placeholder="Correo electronico">
+                    <input type="email" name="email" placeholder="Correo electrónico" required>
                   </div>
                   <div>
-                    <input type="text" placeholder="Mensaje" class="input_message">
+                    <input type="text" name="mensaje" placeholder="Mensaje" class="input_message" required>
                   </div>
                   <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn_on-hover">
-                      Enviar
-                    </button>
+                    <button type="submit" class="btn_on-hover">Enviar</button>
                   </div>
                 </form>
               </div>
@@ -460,7 +466,7 @@
 
 
   <!-- info section -->
-  <section class="info_section ">
+  <!-- <section class="info_section ">
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -476,20 +482,20 @@
                 En todo el mundo
               </p>
             </div>
-            <!-- <div>
+            <div>
               <div class="img-box">
                 <img src="images/telephone-white.png" width="12px" alt="">
               </div>
               <p>
                 +01 1234567890
               </p>
-            </div> -->
+            </div>
             <div>
               <div class="img-box">
                 <img src="images/envelope-white.png" width="18px" alt="">
               </div>
               <p>
-                demo@gmail.com
+                info@impulsagroup.com
               </p>
             </div>
           </div>
@@ -551,6 +557,7 @@
             </div>
           </div>
         </div>
+
         <div class="col-md-3">
           <div class="info_form ">
             <h5>
@@ -580,7 +587,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- end info_section -->
 
