@@ -332,6 +332,12 @@ a:focus {
           align-items: center;
 }
 
+.who_section .who_values_row {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
 .who_section .who_heading_container {
   display: -webkit-box;
   display: -ms-flexbox;
