@@ -76,7 +76,7 @@ html {
 .hero_area {
   height: 100vh;
   background-color: #b5caee;
-  background-image: url(../images/Background\ 6.png);
+  background-image: url(../images/Background\ 1.png);
   background-size: cover;
 }
 
@@ -170,10 +170,10 @@ a:focus {
   font-family: 'Open Sans', sans-serif;
 }
 
-.navbar-brand img {
-  width: 150px;
-  height: auto;
-  display: block;
+.navbar-brand span {
+  font-size: 24px;
+  color: #ffffff;
+  
 }
 
 .custom_nav-container {
