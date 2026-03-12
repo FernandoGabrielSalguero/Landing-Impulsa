@@ -332,6 +332,25 @@ a:focus {
           align-items: center;
 }
 
+.who_section .who_heading_container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.who_section .who_subheading_container {
+  min-height: 56px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 15px;
+}
+
+.who_section .who_subheading_container h2 {
+  font-size: 1.5rem;
+}
+
 .who_section .img-box img {
   width: 100%;
 }
