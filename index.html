@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
-  <!-- Basic -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
+  <meta name="keywords" content="desarrollo web, software, automatizacion, inteligencia artificial, analisis de datos" />
   <meta name="description"
     content="Soluciones digitales que te hacen avanzar. Usamos datos, IA y desarrollo web para potenciar tu negocio." />
   <meta name="author" content="Fernando Gabriel Salguero" />
 
-  <!-- META para redes sociales y WhatsApp -->
   <meta property="og:title" content="impulsa">
   <meta property="og:url" content="https://impulsagroup.com/">
   <meta property="og:type" content="website">
@@ -22,566 +18,412 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
-  <!-- Favicon -->
   <link rel="icon" href="images/Favicon.png" type="image/x-icon">
 
   <title>impulsa</title>
 
-  <!-- slider stylesheet -->
-  <!-- slider stylesheet -->
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-
-  <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
-  <!-- Icons Material design -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/responsive.css" rel="stylesheet" />
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GP6NMLG283"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-GP6NMLG283');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GP6NMLG283"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-GP6NMLG283');
+  </script>
 </head>
 
 <body>
-  <div class="hero_area">
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand" href="index.html">
-            <span>
-              impulsa
-            </span>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+  <div class="site_shell">
+    <header class="site_header">
+      <div class="container">
+        <nav class="site_nav">
+          <a class="brand_mark" href="index.html">impulsa</a>
+          <button class="nav_toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-menu">
+            <span></span>
+            <span></span>
           </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html" onclick="gtag('event', 'click_menu', {
-                      event_category: 'menu',
-                      event_label: 'inicio'
-                    })">
-                    Inicio <span class="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#sobre_nosotros" onclick="gtag('event', 'click_menu', {
-                      event_category: 'menu',
-                      event_label: 'sobre_nosotros'
-                    })">
-                    Sobre Nosotros
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#nuestros_trabajos" onclick="gtag('event', 'click_menu', {
-                      event_category: 'menu',
-                      event_label: 'portfolio'
-                    })">
-                    Portfolio
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#comentarios" onclick="gtag('event', 'click_menu', {
-                      event_category: 'menu',
-                      event_label: 'comentarios'
-                    })">
-                    Clientes impulsa
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#contacto" onclick="gtag('event', 'click_menu', {
-                      event_category: 'menu',
-                      event_label: 'contacto'
-                    })">
-                    Contacto
-                  </a>
-                </li>
-              </ul>
-
-
-            </div>
+          <div class="nav_menu" id="site-menu">
+            <a href="#sobre_nosotros" onclick="gtag('event', 'click_menu', { event_category: 'menu', event_label: 'sobre_nosotros' })">Sobre Nosotros</a>
+            <a href="#servicios" onclick="gtag('event', 'click_menu', { event_category: 'menu', event_label: 'servicios' })">Servicios</a>
+            <a href="#nuestros_trabajos" onclick="gtag('event', 'click_menu', { event_category: 'menu', event_label: 'portfolio' })">Portfolio</a>
+            <a href="#comentarios" onclick="gtag('event', 'click_menu', { event_category: 'menu', event_label: 'comentarios' })">Clientes</a>
+            <a href="#contacto" class="nav_cta" onclick="gtag('event', 'click_menu', { event_category: 'menu', event_label: 'contacto' })">Contacto</a>
           </div>
         </nav>
       </div>
     </header>
-    <!-- end header section -->
 
-    <!-- slider section -->
-    <section class=" slider_section position-relative">
-      <div class="container">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="row">
-                <div class="col">
-                  <div class="detail-box">
-                    <div>
-                      <img src="images/Impulso Análisis de datos.png" alt="Welcome to"
-                        style="max-width: 100%; height: auto;">
-                      <p>
-                        Texto descriptivo sobre el análisis de datos
-                      </p>
-                      <div class="">
-                        <a href="#contacto" onclick="gtag('event', 'click_contacto_carrusel', {
-                          event_category: 'boton',
-                          event_label: 'Análisis de datos'
-                        })">
-                          Contactanos
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    <main>
+      <section class="hero_section">
+        <div class="container">
+          <div class="hero_grid">
+            <div class="hero_copy">
+              <p class="eyebrow">Consultora de software para pymes</p>
+              <h1>Orden, control y crecimiento para empresas que ya no pueden operar con procesos improvisados.</h1>
+              <p class="hero_text">
+                Diseñamos e implementamos soluciones digitales para profesionalizar la operación, automatizar tareas
+                clave y darle a cada decisión una base de datos clara, medible y confiable.
+              </p>
+              <div class="hero_actions">
+                <a class="button_primary" href="#contacto" onclick="gtag('event', 'click_contacto_carrusel', { event_category: 'boton', event_label: 'hero_contacto' })">Solicitar asesoramiento</a>
+                <a class="button_secondary" href="#nuestros_trabajos">Ver proyectos</a>
+              </div>
+              <div class="hero_metrics">
+                <article>
+                  <strong>+20</strong>
+                  <span>proyectos publicados</span>
+                </article>
+                <article>
+                  <strong>+26</strong>
+                  <span>meses innovando</span>
+                </article>
+                <article>
+                  <strong>100%</strong>
+                  <span>foco en claridad operativa</span>
+                </article>
               </div>
             </div>
-            <div class="carousel-item">
-              <div class="row">
-                <div class="col">
-                  <div class="detail-box">
-                    <div>
-                      <img src="images/Impulso Inteligencia Artificial.png" alt="Welcome to"
-                        style="max-width: 100%; height: auto;">
-                      <p>
-                        Texto descriptivo sobre la inteligencia artificial
-                      </p>
-                      <div class="">
-                        <a href="#contacto" onclick="gtag('event', 'click_contacto_carrusel', {
-                          event_category: 'boton',
-                          event_label: 'Inteligencia artificial'
-                        })">
-                          Contactanos
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+            <div class="hero_visual">
+              <div class="hero_panel hero_panel-main">
+                <img src="images/Team Impulsa.jpg" alt="Equipo de Impulsa">
+                <div class="hero_panel-caption">
+                  <span>Impulsa</span>
+                  <strong>Tecnologia con criterio de gestion</strong>
                 </div>
               </div>
-            </div>
-            <div class="carousel-item">
-              <div class="row">
-                <div class="col">
-                  <div class="detail-box">
-                    <div>
-                      <img src="images/Impulso Desarrollo Web.png" alt="Welcome to"
-                        style="max-width: 100%; height: auto;">
-                      <p>
-                        Texto descriptivo sobre desarrollo web
-                      </p>
-                      <div class="">
-                        <a href="#contacto" onclick="gtag('event', 'click_contacto_carrusel', {
-                          event_category: 'boton',
-                          event_label: 'Desarrollo web'
-                        })">
-                          Contactanos
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="hero_panel hero_panel-card">
+                <span class="material-symbols-outlined">monitoring</span>
+                <h2>Procesos mas claros. Datos mas confiables. Mejor capacidad de decision.</h2>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
+      <section class="credibility_band">
+        <div class="container">
+          <div class="credibility_content">
+            <p>Construimos plataformas, automatizaciones y experiencias web para empresas que necesitan estructura, no solo presencia digital.</p>
+            <div class="credibility_logos">
+              <img src="assets/marcas/AMPD.png" alt="AMPD">
+              <img src="assets/marcas/ilmanaGastronomia.png" alt="i'lmana Gastronomia">
+              <img src="assets/marcas/NairobiLoungeBar.png" alt="Nairobi Lounge Bar">
+              <img src="assets/marcas/SVE.png" alt="SVE">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about_section section_spacing" id="sobre_nosotros">
+        <div class="container">
+          <div class="section_intro">
+            <p class="eyebrow">Sobre nosotros</p>
+            <h2>Una consultora enfocada en profesionalizar la forma en que operan las pymes.</h2>
+          </div>
+          <div class="about_grid">
+            <div class="about_copy">
+              <p>
+                Impulsa es una consultora de desarrollo de software que acompaña a pymes a ordenar, automatizar y controlar sus
+                operaciones. Diseña e implementa soluciones tecnologicas que transforman procesos dispersos o manuales en
+                sistemas claros, medibles y escalables.
+              </p>
+              <p>
+                Acompañamos a cada empresa desde el relevamiento y analisis hasta el diseño, desarrollo e implementacion de la
+                solucion, con foco en que la tecnologia no agregue complejidad, sino estructura.
+              </p>
+            </div>
+            <div class="about_image">
+              <img src="images/Background 5.jpg" alt="Espacio de trabajo profesional">
+            </div>
+          </div>
+          <div class="purpose_grid">
+            <article class="purpose_card">
+              <p class="eyebrow">Mision</p>
+              <h3>Acompañar a las pymes a operar con mas claridad y eficiencia.</h3>
+              <p>
+                Acompañar a las pymes a ordenar y automatizar sus procesos mediante soluciones de software que les permitan
+                operar con mayor claridad, control y eficiencia, para que sus lideres puedan enfocarse en decisiones
+                estrategicas de crecimiento.
+              </p>
+            </article>
+            <article class="purpose_card">
+              <p class="eyebrow">Vision</p>
+              <h3>Ser un sello de estructura solida, datos confiables y crecimiento sostenible.</h3>
+              <p>
+                Ser la consultora referente en profesionalizacion operativa para pymes, reconocida por elevar su madurez
+                operativa y de gestion. Queremos que "Impulsa" sea un sello que garantice estructura solida: procesos
+                claros, datos confiables, transparencia y control, generando confianza para crecer y para relacionarse con
+                clientes, socios e inversores.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="services_section section_spacing" id="servicios">
+        <div class="container">
+          <div class="section_intro split_intro">
+            <div>
+              <p class="eyebrow">Servicios</p>
+              <h2>Soluciones pensadas para resolver operacion, gestion y presencia digital.</h2>
+            </div>
+            <p>
+              No trabajamos con paquetes genericos. Diseñamos la herramienta adecuada segun el nivel de madurez, el volumen
+              operativo y los objetivos comerciales de cada empresa.
+            </p>
+          </div>
+          <div class="services_grid">
+            <article class="service_card">
+              <img src="images/Impulso Análisis de datos.png" alt="Analisis de datos">
+              <div class="service_body">
+                <h3>Analisis de datos</h3>
+                <p>Transformamos informacion dispersa en tableros, indicadores y criterios de decision accionables.</p>
+              </div>
+            </article>
+            <article class="service_card">
+              <img src="images/Impulso Inteligencia Artificial.png" alt="Inteligencia artificial">
+              <div class="service_body">
+                <h3>Inteligencia artificial</h3>
+                <p>Automatizamos tareas, mejoramos tiempos de respuesta y conectamos operaciones con herramientas inteligentes.</p>
+              </div>
+            </article>
+            <article class="service_card">
+              <img src="images/Impulso Desarrollo Web.png" alt="Desarrollo web">
+              <div class="service_body">
+                <h3>Desarrollo web</h3>
+                <p>Creamos sitios, plataformas y sistemas con una logica comercial clara y una experiencia profesional.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="process_section section_spacing">
+        <div class="container">
+          <div class="section_intro">
+            <p class="eyebrow">Como trabajamos</p>
+            <h2>Una metodologia sobria: entender, ordenar, construir y escalar.</h2>
+          </div>
+          <div class="process_grid">
+            <article>
+              <span>01</span>
+              <h3>Relevamiento</h3>
+              <p>Mapeamos procesos, cuellos de botella, puntos ciegos y oportunidades concretas de mejora.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Diseño de solucion</h3>
+              <p>Definimos arquitectura, flujos, indicadores y alcance segun prioridad operativa y retorno esperado.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Implementacion</h3>
+              <p>Desarrollamos, integramos y dejamos la solucion funcionando con criterio de uso real.</p>
+            </article>
+            <article>
+              <span>04</span>
+              <h3>Acompañamiento</h3>
+              <p>Medimos adopcion, corregimos desorden residual y consolidamos una operacion mas madura.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio_section section_spacing" id="nuestros_trabajos">
+        <div class="container">
+          <div class="section_intro">
+            <p class="eyebrow">Portfolio</p>
+            <h2>Desarrollos publicados con foco en negocio, posicionamiento y gestion.</h2>
+          </div>
+          <div class="portfolio_grid">
+            <a class="portfolio_card" href="https://ilmanagastronomia.com/" target="_blank" rel="noopener">
+              <img src="images/w-1.png" alt="Proyecto i'lmana Gastronomia">
+              <div class="portfolio_overlay">
+                <span>Landing Page</span>
+                <h3>i'lmana Gastronomia</h3>
+                <strong>Ver proyecto</strong>
+              </div>
+            </a>
+            <a class="portfolio_card" href="https://estudiocardinale.com.ar/" target="_blank" rel="noopener">
+              <img src="images/w-2.png" alt="Proyecto Cardinale">
+              <div class="portfolio_overlay">
+                <span>Landing Page</span>
+                <h3>Cardinale</h3>
+                <strong>Ver proyecto</strong>
+              </div>
+            </a>
+            <a class="portfolio_card" href="https://nairobi.com.ar/" target="_blank" rel="noopener">
+              <img src="images/w-3.png" alt="Proyecto Nairobi">
+              <div class="portfolio_overlay">
+                <span>Carta digital</span>
+                <h3>Nairobi</h3>
+                <strong>Ver proyecto</strong>
+              </div>
+            </a>
+            <a class="portfolio_card" href="https://sve.com.ar/" target="_blank" rel="noopener">
+              <img src="images/w-4.png" alt="Proyecto SVE">
+              <div class="portfolio_overlay">
+                <span>Landing Page</span>
+                <h3>SVE</h3>
+                <strong>Ver proyecto</strong>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="clients_section section_spacing" id="comentarios">
+        <div class="container">
+          <div class="section_intro split_intro">
+            <div>
+              <p class="eyebrow">Clientes impulsa</p>
+              <h2>Empresas que confiaron en nosotros para mejorar su operacion y su presencia digital.</h2>
+            </div>
+            <p>
+              Cada proyecto responde a una necesidad concreta: gestionar socios, pedidos, reservas, operaciones internas o
+              posicionamiento institucional.
+            </p>
+          </div>
+          <div class="clients_grid">
+            <article class="client_card">
+              <img src="assets/marcas/AMPD.png" alt="AMPD">
+              <h3>AMPD</h3>
+              <p>Plataforma de gestion de socios.</p>
+            </article>
+            <article class="client_card">
+              <img src="assets/marcas/ilmanaGastronomia.png" alt="i'lmana Gastronomia">
+              <h3>i'lmana Gastronomia</h3>
+              <p>Plataforma de gestion de pedidos de comida.</p>
+            </article>
+            <article class="client_card">
+              <img src="assets/marcas/NairobiLoungeBar.png" alt="Nairobi Lounge Bar">
+              <h3>Nairobi Lounge Bar</h3>
+              <p>Sistema de carta digital, reservas y pedidos.</p>
+            </article>
+            <article class="client_card">
+              <img src="assets/marcas/SVE.png" alt="SVE">
+              <h3>SVE</h3>
+              <p>Plataforma de gestion integral.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="framework_section section_spacing">
+        <div class="container">
+          <div class="framework_panel">
+            <div class="framework_copy">
+              <p class="eyebrow">Impulsa Framework</p>
+              <h2>Una base lista para acelerar desarrollos con estandares de uso real.</h2>
+              <p>
+                Las plataformas de gestion son privadas. Para que puedas ver como se sienten por dentro, te damos acceso a
+                nuestro framework y a una experiencia que resume el nivel de criterio con el que trabajamos.
+              </p>
+              <a class="button_primary" href="https://framework.impulsagroup.com/" target="_blank" rel="noopener">Ver el framework</a>
+            </div>
+            <div class="framework_visual">
+              <img src="images/Impulso.png" alt="Impulsa Framework">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats_section section_spacing">
+        <div class="container">
+          <div class="stats_grid">
+            <article>
+              <strong>+26</strong>
+              <span>meses innovando</span>
+            </article>
+            <article>
+              <strong>+20</strong>
+              <span>proyectos publicados</span>
+            </article>
+            <article>
+              <strong>+1500</strong>
+              <span>tazas de cafe durante el proceso</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact_section section_spacing" id="contacto">
+        <div class="container">
+          <div class="contact_layout">
+            <div class="contact_copy">
+              <p class="eyebrow">Contacto</p>
+              <h2>Si tu operacion crecio, tu sistema de gestion tambien tiene que crecer.</h2>
+              <p>
+                Conversemos sobre tu contexto, tus procesos y el tipo de solucion que hoy puede darte mas control, mas
+                orden y una mejor imagen frente a clientes, socios e inversores.
+              </p>
+              <ul class="contact_points">
+                <li>Analisis inicial orientado a prioridades reales.</li>
+                <li>Soluciones a medida para pymes y equipos en expansion.</li>
+                <li>Implementacion con foco en adopcion y utilidad concreta.</li>
+              </ul>
+            </div>
+            <div class="contact_form_shell">
+              <form class="contact_form" action="enviar.php" method="POST">
+                <div>
+                  <input type="text" name="nombre" placeholder="Nombre completo" required>
+                </div>
+                <div>
+                  <input type="text" name="telefono" placeholder="Telefono de contacto" required>
+                </div>
+                <div>
+                  <input type="email" name="email" placeholder="Correo electronico" required>
+                </div>
+                <div>
+                  <textarea name="mensaje" placeholder="Contanos brevemente que necesita tu empresa" required></textarea>
+                </div>
+                <button type="submit" class="button_primary button_full" onclick="gtag('event', 'click_enviar_formulario', { event_category: 'formulario', event_label: 'contacto' })">Enviar consulta</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site_footer">
+      <div class="container footer_inner">
+        <p>&copy; 2026 impulsa group. Todos los derechos reservados.</p>
+        <a href="#contacto">Iniciar una conversacion</a>
       </div>
-    </section>
-    <!-- end slider section -->
+    </footer>
   </div>
-
-  <!-- sobre nosotros section -->
-  <section class="who_section" id="sobre_nosotros">
-    <div class="container">
-      <div class="heading_container who_heading_container" style="align-items: center; text-align: center; width: 100%;">
-        <h2 style="margin: 0 auto; display: inline-block;">
-          Sobre Nosotros
-        </h2>
-      </div>
-      <p>
-        Impulsa es una consultora de desarrollo de software que acompaña a pymes a ordenar, automatizar y controlar sus
-        operaciones. Diseña e implementa soluciones tecnológicas que transforman procesos dispersos o manuales en
-        sistemas claros, medibles y escalables.
-      </p>
-      <p>
-        Acompañamos a cada empresa desde el relevamiento y análisis hasta el diseño, desarrollo e implementación de la
-        solución, con foco en que la tecnología no agregue complejidad, sino estructura.
-      </p>
-      <div class="row who_values_row" style="margin-top: 35px;">
-        <div class="col-md-6" style="margin-bottom: 25px;">
-          <div class="heading_container who_heading_container who_subheading_container" style="align-items: center; text-align: center; width: 100%;">
-            <h2 style="margin: 0 auto; display: inline-block;">
-              Misión
-            </h2>
-          </div>
-          <p>
-            Acompañar a las pymes a ordenar y automatizar sus procesos mediante soluciones de software que les permitan
-            operar con mayor claridad, control y eficiencia, para que sus líderes puedan enfocarse en decisiones
-            estratégicas de crecimiento.
-          </p>
-        </div>
-        <div class="col-md-6" style="margin-bottom: 25px;">
-          <div class="heading_container who_heading_container who_subheading_container" style="align-items: center; text-align: center; width: 100%;">
-            <h2 style="margin: 0 auto; display: inline-block;">
-              Visión
-            </h2>
-          </div>
-          <p>
-            Ser la consultora referente en profesionalización operativa para pymes, reconocida por elevar su madurez
-            operativa y de gestión. Queremos que "Impulsa" sea un sello que garantice estructura sólida: procesos
-            claros, datos confiables, transparencia y control, generando confianza para crecer y para relacionarse con
-            clientes, socios e inversores.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- end sobre nosotros section -->
-
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <!-- client section -->
-  <section class="client_section" id="comentarios">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          Clientes impulsa
-        </h2>
-                <p>
-          Empresas que confían en nosotros
-        </p>
-      </div>
-      <div class="carousel-wrap ">
-        <div class="owl-carousel">
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="assets/marcas/AMPD.png" alt="AMPD">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  AMPD
-                </h5>
-                <p>
-                  Plataforma de gestión de socios
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="assets/marcas/ilmanaGastronomia.png" alt="ilmanaGastronomia">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  i'lmana Gastronomia
-                </h5>
-                <p>
-                  Plataforma de gestión de pedidos de comida
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="assets/marcas/MariaReina.png" alt="MariaReina">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Maria Reina
-                </h5>
-                <p>
-                  Sistema de correos internos
-                </p>
-              </div>
-            </div>
-          </div> -->
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="assets/marcas/NairobiLoungeBar.png" alt="NairobiLoungeBar">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Nairobi Lounge Bar
-                </h5>
-                <p>
-                  Sistema de carta digital, gestión de reservas y pedidos
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="assets/marcas/SVE.png" alt="SVE">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  SVE
-                </h5>
-                <p>
-                  Plataforma de gestión integral
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end client section -->
-
-  <!-- work section -->
-  <section class="work_section layout_padding" id="nuestros_trabajos">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          Nuestros trabajos
-        </h2>
-        <p>
-          Alguno de nuestros desarrollos
-        </p>
-      </div>
-      <div class="work_cards">
-        <a class="work_card" href="https://ilmanagastronomia.com/" target="_blank" rel="noopener">
-          <div class="work_card-icon">
-            <span class="material-symbols-outlined">restaurant</span>
-          </div>
-          <h3>
-            i'lmana Gastronomia
-          </h3>
-          <p>
-            Landing Page
-          </p>
-          <span class="work_card-cta">Ver proyecto</span>
-        </a>
-        <a class="work_card" href="https://estudiocardinale.com.ar/" target="_blank" rel="noopener">
-          <div class="work_card-icon">
-            <span class="material-symbols-outlined">account_balance</span>
-          </div>
-          <h3>
-            Cardinale
-          </h3>
-          <p>
-            Landing Page
-          </p>
-          <span class="work_card-cta">Ver proyecto</span>
-        </a>
-        <a class="work_card" href="https://nairobi.com.ar/" target="_blank" rel="noopener">
-          <div class="work_card-icon">
-            <span class="material-symbols-outlined">menu_book</span>
-          </div>
-          <h3>
-            Nairobi
-          </h3>
-          <p>
-            Carta digital
-          </p>
-          <span class="work_card-cta">Ver proyecto</span>
-        </a>
-        <a class="work_card" href="https://sve.com.ar/" target="_blank" rel="noopener">
-          <div class="work_card-icon">
-            <span class="material-symbols-outlined">language</span>
-          </div>
-          <h3>
-            SVE
-          </h3>
-          <p>
-            Landing Page
-          </p>
-          <span class="work_card-cta">Ver proyecto</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- end work section -->
-
-  <!-- framework section -->
-  <section class="framework_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          Impulsa Framework
-        </h2>
-        <p>
-          La base con la que construimos nuestras plataformas de gestión
-        </p>
-      </div>
-      <div class="framework_card">
-        <div class="framework_card-logo">
-          <img src="images/Impulso.png" alt="Impulsa Framework">
-        </div>
-        <div class="framework_card-content">
-          <h3>
-            Acceso a nuestro framework
-          </h3>
-          <p>
-            Las plataformas de gestión son privadas. Para que puedas ver cómo se sienten por dentro, te damos acceso a
-            nuestro framework y su experiencia de uso.
-          </p>
-          <a class="framework_card-cta" href="https://framework.impulsagroup.com/" target="_blank" rel="noopener">
-            Ver el framework
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end framework section -->
-
-
-  <!-- target section -->
-  <section class="target_section layout_padding2">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 col-sm-6">
-          <div class="detail-box">
-            <h2>
-              Más de 26
-            </h2>
-            <h5>
-              Meses innovando
-            </h5>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="detail-box">
-            <h2>
-              Más de 20
-            </h2>
-            <h5>
-              Proyectos publicados
-            </h5>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="detail-box">
-            <h2>
-              Más de 1500
-            </h2>
-            <h5>
-              Tasas de café fueron consumidas durante el proceso
-            </h5>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end target section -->
-
-
-  <!-- contact section -->
-
-  <section class="contact_section layout_padding" id="contacto">
-    <div class="container">
-
-      <div class="heading_container">
-        <h2>
-          Contactanos
-        </h2>
-      </div>
-      <div class="">
-        <div class="">
-          <div class="row">
-            <div class="col-md-9 mx-auto">
-              <div class="contact-form">
-                <form action="enviar.php" method="POST">
-                  <div>
-                    <input type="text" name="nombre" placeholder="Nombre completo" required>
-                  </div>
-                  <div>
-                    <input type="text" name="telefono" placeholder="Teléfono de contacto" required>
-                  </div>
-                  <div>
-                    <input type="email" name="email" placeholder="Correo electrónico" required>
-                  </div>
-                  <div>
-                    <input type="text" name="mensaje" placeholder="Mensaje" class="input_message" required>
-                  </div>
-                  <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn_on-hover" onclick="gtag('event', 'click_enviar_formulario', {
-                      event_category: 'formulario',
-                      event_label: 'contacto'
-                    })">Enviar</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="map_img-box">
-        <!-- <img src="images/map-img.png" alt=""> -->
-      </div>
-    </div>
-  </section>
-  <!-- end contact section -->
-
-  <!-- footer section -->
-  <section class="container-fluid footer_section">
-    <p>
-      &copy; 2025 Todos los derechos reservados por
-      <a href="">impulsa group</a>
-    </p>
-  </section>
-  <!-- footer section -->
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <!-- owl carousel script 
-    -->
-  <script type="text/javascript">
-    $(".owl-carousel").owlCarousel({
-      loop: true,
-      margin: 0,
-      navText: [],
-      center: true,
-      autoplay: true,
-      autoplayHoverPause: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-        1000: {
-          items: 3
-        }
-      }
-    });
-  </script>
-  <!-- end owl carousel script -->
+  <script>
+    (function () {
+      var toggle = document.querySelector('.nav_toggle');
+      var menu = document.querySelector('.nav_menu');
 
+      if (!toggle || !menu) return;
+
+      toggle.addEventListener('click', function () {
+        var isOpen = menu.classList.toggle('is_open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menu.classList.remove('is_open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
 </body>
 
 </html>
