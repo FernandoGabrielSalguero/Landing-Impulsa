@@ -1,429 +1,938 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-  <meta name="keywords" content="desarrollo web, software, automatizacion, inteligencia artificial, analisis de datos" />
-  <meta name="description"
-    content="Soluciones digitales que te hacen avanzar. Usamos datos, IA y desarrollo web para potenciar tu negocio." />
-  <meta name="author" content="Fernando Gabriel Salguero" />
-
-  <meta property="og:title" content="impulsa">
-  <meta property="og:url" content="https://impulsagroup.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="images/Impulso.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-
-  <link rel="icon" href="images/Favicon.png" type="image/x-icon">
-
-  <title>impulsa</title>
-
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impulsa | Software para ordenar y escalar pymes</title>
+  <meta
+    name="description"
+    content="Impulsa acompana a pymes a ordenar, automatizar y controlar sus operaciones mediante soluciones de software claras, medibles y escalables."
+  >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" />
-  <link href="css/responsive.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4efe7;
+      --bg-soft: #fbf8f3;
+      --surface: rgba(255, 255, 255, 0.8);
+      --surface-strong: #fffdf9;
+      --text: #182127;
+      --muted: #5f6a70;
+      --line: rgba(24, 33, 39, 0.12);
+      --primary: #0d6b5f;
+      --primary-dark: #0b564c;
+      --accent: #d97941;
+      --accent-soft: rgba(217, 121, 65, 0.14);
+      --shadow: 0 24px 80px rgba(24, 33, 39, 0.12);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --container: 1180px;
+    }
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GP6NMLG283"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-GP6NMLG283');
-  </script>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(13, 107, 95, 0.16), transparent 30%),
+        radial-gradient(circle at right 10% top 20%, rgba(217, 121, 65, 0.16), transparent 20%),
+        linear-gradient(180deg, #f7f3eb 0%, #f3ece2 42%, #fcfaf6 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page-shell {
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--container));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(251, 248, 243, 0.8);
+      border-bottom: 1px solid rgba(24, 33, 39, 0.08);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .brand-mark {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 14px;
+      background:
+        linear-gradient(145deg, rgba(13, 107, 95, 0.95), rgba(11, 86, 76, 0.95));
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 26px rgba(13, 107, 95, 0.28);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      border: 0;
+      border-radius: 999px;
+      padding: 0.95rem 1.4rem;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      box-shadow: 0 14px 34px rgba(13, 107, 95, 0.28);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(24, 33, 39, 0.08);
+    }
+
+    .hero {
+      padding: 4.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(24, 33, 39, 0.08);
+      color: var(--primary-dark);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      margin: 1rem 0 1rem;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      max-width: 12ch;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 58ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions,
+    .stat-row,
+    .contact-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .hero-actions {
+      margin-top: 1.8rem;
+    }
+
+    .stat-row {
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      min-width: 170px;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(24, 33, 39, 0.08);
+      box-shadow: 0 14px 40px rgba(24, 33, 39, 0.06);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.45rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-panel {
+      position: relative;
+      padding: 1.4rem;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 253, 249, 0.96));
+      border: 1px solid rgba(24, 33, 39, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel::before,
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      border-radius: 24px;
+      z-index: -1;
+    }
+
+    .hero-panel::before {
+      inset: auto -1rem -1rem auto;
+      width: 140px;
+      height: 140px;
+      background: rgba(217, 121, 65, 0.16);
+    }
+
+    .hero-panel::after {
+      inset: -1.25rem auto auto -1.25rem;
+      width: 90px;
+      height: 90px;
+      background: rgba(13, 107, 95, 0.16);
+    }
+
+    .board {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .board-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .board-title {
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.03em;
+    }
+
+    .board-meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .flow-card,
+    .mini-card,
+    .section-card,
+    .form-card,
+    .quote-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+    }
+
+    .flow-card {
+      padding: 1.1rem;
+    }
+
+    .flow-card span,
+    .process-step span {
+      display: inline-flex;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+
+    .flow-card h3,
+    .section-card h3,
+    .process-step h3,
+    .form-card h3,
+    .quote-card h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.05rem;
+      letter-spacing: -0.03em;
+    }
+
+    .flow-card p,
+    .section-card p,
+    .process-step p,
+    .quote-card p,
+    .form-note,
+    .list li {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    section {
+      padding: 1.75rem 0;
+    }
+
+    .section-heading {
+      display: grid;
+      gap: 0.85rem;
+      margin-bottom: 1.6rem;
+      max-width: 62ch;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.03rem;
+    }
+
+    .problem-grid,
+    .services-grid,
+    .proof-grid,
+    .vision-grid,
+    .process-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .problem-grid,
+    .services-grid,
+    .proof-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .vision-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .section-card,
+    .quote-card,
+    .form-card {
+      padding: 1.5rem;
+      box-shadow: 0 14px 40px rgba(24, 33, 39, 0.05);
+    }
+
+    .section-card strong {
+      display: inline-block;
+      margin-bottom: 0.7rem;
+      color: var(--primary-dark);
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .list {
+      margin: 1rem 0 0;
+      padding-left: 1.1rem;
+    }
+
+    .list li + li {
+      margin-top: 0.6rem;
+    }
+
+    .highlight-band {
+      margin-top: 2rem;
+      padding: 1.4rem 1.5rem;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(13, 107, 95, 0.96), rgba(11, 86, 76, 0.96));
+      color: #edf8f5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      box-shadow: 0 20px 40px rgba(13, 107, 95, 0.24);
+    }
+
+    .highlight-band p {
+      margin: 0;
+      max-width: 54ch;
+      line-height: 1.7;
+    }
+
+    .quote-card {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(249, 243, 234, 0.96));
+    }
+
+    .quote-card p {
+      font-size: 1.08rem;
+    }
+
+    .process-step {
+      padding: 1.4rem;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+    }
+
+    .lead-section {
+      padding: 2.2rem 0 5rem;
+    }
+
+    .lead-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .contact-points {
+      margin-top: 1.6rem;
+    }
+
+    .contact-chip {
+      padding: 0.85rem 1rem;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .form-card {
+      background: rgba(255, 253, 249, 0.96);
+    }
+
+    form {
+      display: grid;
+      gap: 0.95rem;
+      margin-top: 1rem;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.95rem;
+    }
+
+    label {
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid rgba(24, 33, 39, 0.14);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+      font: inherit;
+      color: var(--text);
+      background: #fff;
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: rgba(13, 107, 95, 0.55);
+      box-shadow: 0 0 0 4px rgba(13, 107, 95, 0.1);
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .form-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.2rem;
+    }
+
+    .form-note {
+      font-size: 0.92rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(24, 33, 39, 0.08);
+      padding: 1.4rem 0 2rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 700ms ease forwards;
+    }
+
+    .delay-1 { animation-delay: 120ms; }
+    .delay-2 { animation-delay: 220ms; }
+    .delay-3 { animation-delay: 320ms; }
+    .delay-4 { animation-delay: 420ms; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .vision-grid,
+      .lead-grid,
+      .problem-grid,
+      .services-grid,
+      .proof-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding-top: 2.6rem;
+      }
+
+      .field-row,
+      .flow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        max-width: 9ch;
+      }
+
+      .topbar-inner {
+        padding: 0.9rem 0;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions .btn,
+      .form-footer .btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <div class="site_shell">
-    <header class="site_header">
-      <div class="container">
-        <nav class="site_nav">
-          <a class="brand_mark" href="index.html">impulsa</a>
-          <button class="nav_toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-menu">
-            <span></span>
-            <span></span>
-          </button>
-          <div class="nav_menu" id="site-menu">
-            <a href="#sobre_nosotros" onclick="gtag('event', 'click_menu', { event_category: 'menu', event_label: 'sobre_nosotros' })">Sobre Nosotros</a>
-            <a href="#servicios" onclick="gtag('event', 'click_menu', { event_category: 'menu', event_label: 'servicios' })">Servicios</a>
-            <a href="#nuestros_trabajos" onclick="gtag('event', 'click_menu', { event_category: 'menu', event_label: 'portfolio' })">Portfolio</a>
-            <a href="#comentarios" onclick="gtag('event', 'click_menu', { event_category: 'menu', event_label: 'comentarios' })">Clientes</a>
-            <a href="#contacto" class="nav_cta" onclick="gtag('event', 'click_menu', { event_category: 'menu', event_label: 'contacto' })">Contacto</a>
-          </div>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="#inicio" aria-label="Impulsa, inicio">
+          <span class="brand-mark">I</span>
+          <span>Impulsa</span>
+        </a>
+        <nav class="nav" aria-label="Principal">
+          <a href="#servicios">Servicios</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#nosotros">Enfoque</a>
+          <a href="#contacto">Contacto</a>
         </nav>
+        <a class="btn btn-primary" href="#contacto">Solicitar diagnostico</a>
       </div>
     </header>
 
-    <main>
-      <section class="hero_section">
-        <div class="container">
-          <div class="hero_grid">
-            <div class="hero_copy">
-              <p class="eyebrow">Consultora de software para pymes</p>
-              <h1>Orden, control y crecimiento para empresas que ya no pueden operar con procesos improvisados.</h1>
-              <p class="hero_text">
-                Diseñamos e implementamos soluciones digitales para profesionalizar la operación, automatizar tareas
-                clave y darle a cada decisión una base de datos clara, medible y confiable.
-              </p>
-              <div class="hero_actions">
-                <a class="button_primary" href="#contacto" onclick="gtag('event', 'click_contacto_carrusel', { event_category: 'boton', event_label: 'hero_contacto' })">Solicitar asesoramiento</a>
-                <a class="button_secondary" href="#nuestros_trabajos">Ver proyectos</a>
+    <main id="inicio">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow fade-up">Consultora de desarrollo de software para pymes</div>
+            <h1 class="fade-up delay-1">Ordena tu operacion. Automatiza lo repetitivo. Gana control.</h1>
+            <p class="fade-up delay-2">
+              Impulsa acompana a pymes que crecieron entre planillas, mensajes y procesos manuales, y hoy necesitan
+              estructura para operar con claridad. Disenamos e implementamos soluciones de software que convierten el
+              caos operativo en un sistema medible, confiable y escalable.
+            </p>
+            <div class="hero-actions fade-up delay-3">
+              <a class="btn btn-primary" href="#contacto">Quiero una reunion</a>
+              <a class="btn btn-secondary" href="#servicios">Ver como trabajamos</a>
+            </div>
+            <div class="stat-row fade-up delay-4">
+              <div class="stat-card">
+                <strong>Mas claridad</strong>
+                <span>Procesos visibles, responsables definidos y menos dependencia del seguimiento manual.</span>
               </div>
-              <div class="hero_metrics">
-                <article>
-                  <strong>+20</strong>
-                  <span>proyectos publicados</span>
-                </article>
-                <article>
-                  <strong>+26</strong>
-                  <span>meses innovando</span>
-                </article>
-                <article>
-                  <strong>100%</strong>
-                  <span>foco en claridad operativa</span>
-                </article>
+              <div class="stat-card">
+                <strong>Mas control</strong>
+                <span>Datos confiables para decidir con criterio, no por intuicion o urgencia.</span>
+              </div>
+              <div class="stat-card">
+                <strong>Mas eficiencia</strong>
+                <span>Automatizacion enfocada en reducir friccion y sostener el crecimiento.</span>
               </div>
             </div>
-            <div class="hero_visual">
-              <div class="hero_panel hero_panel-main">
-                <img src="images/Team Impulsa.jpg" alt="Equipo de Impulsa">
-                <div class="hero_panel-caption">
-                  <span>Impulsa</span>
-                  <strong>Tecnologia con criterio de gestion</strong>
+          </div>
+
+          <aside class="hero-panel fade-up delay-2" aria-label="Resumen de propuesta">
+            <div class="board">
+              <div class="board-header">
+                <div>
+                  <div class="board-title">De procesos dispersos a una operacion profesional</div>
+                  <div class="board-meta">Tecnologia con estructura, no complejidad</div>
                 </div>
+                <span class="eyebrow">Impulsa</span>
               </div>
-              <div class="hero_panel hero_panel-card">
-                <span class="material-symbols-outlined">monitoring</span>
-                <h2>Procesos mas claros. Datos mas confiables. Mejor capacidad de decision.</h2>
+
+              <div class="flow-grid">
+                <article class="flow-card">
+                  <span>1</span>
+                  <h3>Relevamiento y diagnostico</h3>
+                  <p>Entendemos como trabaja la empresa hoy, donde se pierde tiempo y donde falta trazabilidad.</p>
+                </article>
+                <article class="flow-card">
+                  <span>2</span>
+                  <h3>Diseno de solucion</h3>
+                  <p>Traducimos la operacion en un sistema claro, con procesos definidos y datos utiles.</p>
+                </article>
+                <article class="flow-card">
+                  <span>3</span>
+                  <h3>Desarrollo e implementacion</h3>
+                  <p>Construimos la herramienta adecuada y acompanamos su adopcion dentro del equipo.</p>
+                </article>
+                <article class="flow-card">
+                  <span>4</span>
+                  <h3>Control y escalabilidad</h3>
+                  <p>La empresa gana visibilidad operativa para crecer con menos improvisacion.</p>
+                </article>
               </div>
             </div>
-          </div>
+          </aside>
         </div>
       </section>
 
-      <section class="credibility_band">
+      <section id="nosotros">
         <div class="container">
-          <div class="credibility_content">
-            <p>Construimos plataformas, automatizaciones y experiencias web para empresas que necesitan estructura, no solo presencia digital.</p>
-            <div class="credibility_logos">
-              <img src="assets/marcas/AMPD.png" alt="AMPD">
-              <img src="assets/marcas/ilmanaGastronomia.png" alt="i'lmana Gastronomia">
-              <img src="assets/marcas/NairobiLoungeBar.png" alt="Nairobi Lounge Bar">
-              <img src="assets/marcas/SVE.png" alt="SVE">
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="about_section section_spacing" id="sobre_nosotros">
-        <div class="container">
-          <div class="section_intro">
-            <p class="eyebrow">Sobre nosotros</p>
-            <h2>Una consultora enfocada en profesionalizar la forma en que operan las pymes.</h2>
-          </div>
-          <div class="about_grid">
-            <div class="about_copy">
-              <p>
-                Impulsa es una consultora de desarrollo de software que acompaña a pymes a ordenar, automatizar y controlar sus
-                operaciones. Diseña e implementa soluciones tecnologicas que transforman procesos dispersos o manuales en
-                sistemas claros, medibles y escalables.
-              </p>
-              <p>
-                Acompañamos a cada empresa desde el relevamiento y analisis hasta el diseño, desarrollo e implementacion de la
-                solucion, con foco en que la tecnologia no agregue complejidad, sino estructura.
-              </p>
-            </div>
-            <div class="about_image">
-              <img src="images/Background 5.jpg" alt="Espacio de trabajo profesional">
-            </div>
-          </div>
-          <div class="purpose_grid">
-            <article class="purpose_card">
-              <p class="eyebrow">Mision</p>
-              <h3>Acompañar a las pymes a operar con mas claridad y eficiencia.</h3>
-              <p>
-                Acompañar a las pymes a ordenar y automatizar sus procesos mediante soluciones de software que les permitan
-                operar con mayor claridad, control y eficiencia, para que sus lideres puedan enfocarse en decisiones
-                estrategicas de crecimiento.
-              </p>
-            </article>
-            <article class="purpose_card">
-              <p class="eyebrow">Vision</p>
-              <h3>Ser un sello de estructura solida, datos confiables y crecimiento sostenible.</h3>
-              <p>
-                Ser la consultora referente en profesionalizacion operativa para pymes, reconocida por elevar su madurez
-                operativa y de gestion. Queremos que "Impulsa" sea un sello que garantice estructura solida: procesos
-                claros, datos confiables, transparencia y control, generando confianza para crecer y para relacionarse con
-                clientes, socios e inversores.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="services_section section_spacing" id="servicios">
-        <div class="container">
-          <div class="section_intro split_intro">
-            <div>
-              <p class="eyebrow">Servicios</p>
-              <h2>Soluciones pensadas para resolver operacion, gestion y presencia digital.</h2>
-            </div>
+          <div class="section-heading fade-up">
+            <h2>La tecnologia no deberia agregar mas ruido.</h2>
             <p>
-              No trabajamos con paquetes genericos. Diseñamos la herramienta adecuada segun el nivel de madurez, el volumen
-              operativo y los objetivos comerciales de cada empresa.
+              Muchas pymes ya saben que necesitan software, pero no cualquier software. Necesitan estructura:
+              procesos claros, datos confiables y una operacion que no dependa del desorden ni de personas que
+              "tienen todo en la cabeza".
             </p>
           </div>
-          <div class="services_grid">
-            <article class="service_card">
-              <img src="images/Impulso Análisis de datos.png" alt="Analisis de datos">
-              <div class="service_body">
-                <h3>Analisis de datos</h3>
-                <p>Transformamos informacion dispersa en tableros, indicadores y criterios de decision accionables.</p>
-              </div>
-            </article>
-            <article class="service_card">
-              <img src="images/Impulso Inteligencia Artificial.png" alt="Inteligencia artificial">
-              <div class="service_body">
-                <h3>Inteligencia artificial</h3>
-                <p>Automatizamos tareas, mejoramos tiempos de respuesta y conectamos operaciones con herramientas inteligentes.</p>
-              </div>
-            </article>
-            <article class="service_card">
-              <img src="images/Impulso Desarrollo Web.png" alt="Desarrollo web">
-              <div class="service_body">
-                <h3>Desarrollo web</h3>
-                <p>Creamos sitios, plataformas y sistemas con una logica comercial clara y una experiencia profesional.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      <section class="process_section section_spacing">
-        <div class="container">
-          <div class="section_intro">
-            <p class="eyebrow">Como trabajamos</p>
-            <h2>Una metodologia sobria: entender, ordenar, construir y escalar.</h2>
-          </div>
-          <div class="process_grid">
-            <article>
-              <span>01</span>
-              <h3>Relevamiento</h3>
-              <p>Mapeamos procesos, cuellos de botella, puntos ciegos y oportunidades concretas de mejora.</p>
+          <div class="problem-grid">
+            <article class="section-card fade-up delay-1">
+              <strong>Problema frecuente</strong>
+              <h3>Procesos repartidos entre planillas, chats y memoria operativa</h3>
+              <p>Eso dificulta el seguimiento, genera errores y vuelve lenta cualquier mejora.</p>
             </article>
-            <article>
-              <span>02</span>
-              <h3>Diseño de solucion</h3>
-              <p>Definimos arquitectura, flujos, indicadores y alcance segun prioridad operativa y retorno esperado.</p>
+            <article class="section-card fade-up delay-2">
+              <strong>Lo que hacemos</strong>
+              <h3>Ordenamos y automatizamos la operacion con software a medida</h3>
+              <p>Definimos como deberia funcionar el proceso y construimos la solucion para sostenerlo.</p>
             </article>
-            <article>
-              <span>03</span>
-              <h3>Implementacion</h3>
-              <p>Desarrollamos, integramos y dejamos la solucion funcionando con criterio de uso real.</p>
-            </article>
-            <article>
-              <span>04</span>
-              <h3>Acompañamiento</h3>
-              <p>Medimos adopcion, corregimos desorden residual y consolidamos una operacion mas madura.</p>
+            <article class="section-card fade-up delay-3">
+              <strong>El objetivo</strong>
+              <h3>Que los lideres decidan mejor y el equipo trabaje con mas control</h3>
+              <p>Menos incendios operativos. Mas foco en crecimiento, gestion y estrategia.</p>
             </article>
           </div>
-        </div>
-      </section>
 
-      <section class="portfolio_section section_spacing" id="nuestros_trabajos">
-        <div class="container">
-          <div class="section_intro">
-            <p class="eyebrow">Portfolio</p>
-            <h2>Desarrollos publicados con foco en negocio, posicionamiento y gestion.</h2>
-          </div>
-          <div class="portfolio_grid">
-            <a class="portfolio_card" href="https://ilmanagastronomia.com/" target="_blank" rel="noopener">
-              <img src="images/w-1.png" alt="Proyecto i'lmana Gastronomia">
-              <div class="portfolio_overlay">
-                <span>Landing Page</span>
-                <h3>i'lmana Gastronomia</h3>
-                <strong>Ver proyecto</strong>
-              </div>
-            </a>
-            <a class="portfolio_card" href="https://estudiocardinale.com.ar/" target="_blank" rel="noopener">
-              <img src="images/w-2.png" alt="Proyecto Cardinale">
-              <div class="portfolio_overlay">
-                <span>Landing Page</span>
-                <h3>Cardinale</h3>
-                <strong>Ver proyecto</strong>
-              </div>
-            </a>
-            <a class="portfolio_card" href="https://nairobi.com.ar/" target="_blank" rel="noopener">
-              <img src="images/w-3.png" alt="Proyecto Nairobi">
-              <div class="portfolio_overlay">
-                <span>Carta digital</span>
-                <h3>Nairobi</h3>
-                <strong>Ver proyecto</strong>
-              </div>
-            </a>
-            <a class="portfolio_card" href="https://sve.com.ar/" target="_blank" rel="noopener">
-              <img src="images/w-4.png" alt="Proyecto SVE">
-              <div class="portfolio_overlay">
-                <span>Landing Page</span>
-                <h3>SVE</h3>
-                <strong>Ver proyecto</strong>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="clients_section section_spacing" id="comentarios">
-        <div class="container">
-          <div class="section_intro split_intro">
-            <div>
-              <p class="eyebrow">Clientes impulsa</p>
-              <h2>Empresas que confiaron en nosotros para mejorar su operacion y su presencia digital.</h2>
-            </div>
+          <div class="highlight-band fade-up delay-4">
             <p>
-              Cada proyecto responde a una necesidad concreta: gestionar socios, pedidos, reservas, operaciones internas o
-              posicionamiento institucional.
+              Nuestra mision es acompanar a las pymes a ordenar y automatizar sus procesos para que puedan operar con
+              mayor claridad, control y eficiencia, liberando a sus lideres para enfocarse en decisiones estrategicas.
+            </p>
+            <a class="btn btn-secondary" href="#contacto">Hablar con Impulsa</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="servicios">
+        <div class="container">
+          <div class="section-heading fade-up">
+            <h2>Que resuelve Impulsa en una pyme</h2>
+            <p>
+              No vendemos tecnologia aislada. Disenamos soluciones que mejoran el funcionamiento de la empresa y le
+              dan soporte a su crecimiento.
             </p>
           </div>
-          <div class="clients_grid">
-            <article class="client_card">
-              <img src="assets/marcas/AMPD.png" alt="AMPD">
-              <h3>AMPD</h3>
-              <p>Plataforma de gestion de socios.</p>
-            </article>
-            <article class="client_card">
-              <img src="assets/marcas/ilmanaGastronomia.png" alt="i'lmana Gastronomia">
-              <h3>i'lmana Gastronomia</h3>
-              <p>Plataforma de gestion de pedidos de comida.</p>
-            </article>
-            <article class="client_card">
-              <img src="assets/marcas/NairobiLoungeBar.png" alt="Nairobi Lounge Bar">
-              <h3>Nairobi Lounge Bar</h3>
-              <p>Sistema de carta digital, reservas y pedidos.</p>
-            </article>
-            <article class="client_card">
-              <img src="assets/marcas/SVE.png" alt="SVE">
-              <h3>SVE</h3>
-              <p>Plataforma de gestion integral.</p>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      <section class="framework_section section_spacing">
-        <div class="container">
-          <div class="framework_panel">
-            <div class="framework_copy">
-              <p class="eyebrow">Impulsa Framework</p>
-              <h2>Una base lista para acelerar desarrollos con estandares de uso real.</h2>
-              <p>
-                Las plataformas de gestion son privadas. Para que puedas ver como se sienten por dentro, te damos acceso a
-                nuestro framework y a una experiencia que resume el nivel de criterio con el que trabajamos.
-              </p>
-              <a class="button_primary" href="https://framework.impulsagroup.com/" target="_blank" rel="noopener">Ver el framework</a>
-            </div>
-            <div class="framework_visual">
-              <img src="images/Impulso.png" alt="Impulsa Framework">
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="stats_section section_spacing">
-        <div class="container">
-          <div class="stats_grid">
-            <article>
-              <strong>+26</strong>
-              <span>meses innovando</span>
-            </article>
-            <article>
-              <strong>+20</strong>
-              <span>proyectos publicados</span>
-            </article>
-            <article>
-              <strong>+1500</strong>
-              <span>tazas de cafe durante el proceso</span>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="contact_section section_spacing" id="contacto">
-        <div class="container">
-          <div class="contact_layout">
-            <div class="contact_copy">
-              <p class="eyebrow">Contacto</p>
-              <h2>Si tu operacion crecio, tu sistema de gestion tambien tiene que crecer.</h2>
-              <p>
-                Conversemos sobre tu contexto, tus procesos y el tipo de solucion que hoy puede darte mas control, mas
-                orden y una mejor imagen frente a clientes, socios e inversores.
-              </p>
-              <ul class="contact_points">
-                <li>Analisis inicial orientado a prioridades reales.</li>
-                <li>Soluciones a medida para pymes y equipos en expansion.</li>
-                <li>Implementacion con foco en adopcion y utilidad concreta.</li>
+          <div class="services-grid">
+            <article class="section-card fade-up delay-1">
+              <h3>Orden operativo</h3>
+              <p>Mapeamos procesos, detectamos cuellos de botella y proponemos una estructura operativa mas clara.</p>
+              <ul class="list">
+                <li>Flujos definidos</li>
+                <li>Roles y responsabilidades mas visibles</li>
+                <li>Menos dependencias informales</li>
               </ul>
+            </article>
+            <article class="section-card fade-up delay-2">
+              <h3>Automatizacion inteligente</h3>
+              <p>Eliminamos tareas manuales repetitivas y reducimos errores con procesos asistidos por software.</p>
+              <ul class="list">
+                <li>Seguimiento de operaciones</li>
+                <li>Alertas y validaciones</li>
+                <li>Carga de datos mas confiable</li>
+              </ul>
+            </article>
+            <article class="section-card fade-up delay-3">
+              <h3>Control y trazabilidad</h3>
+              <p>Centralizamos informacion para que cada decision tenga soporte y cada proceso deje evidencia.</p>
+              <ul class="list">
+                <li>Indicadores operativos</li>
+                <li>Datos consistentes</li>
+                <li>Visibilidad para lideres y equipos</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container vision-grid">
+          <article class="quote-card fade-up">
+            <h3>Vision</h3>
+            <p>
+              Queremos que Impulsa sea la consultora referente en profesionalizacion operativa para pymes: un sello de
+              procesos claros, datos confiables, transparencia y control. Una empresa mejor ordenada es una empresa con
+              mas capacidad para crecer y generar confianza frente a clientes, socios e inversores.
+            </p>
+          </article>
+          <article class="section-card fade-up delay-2">
+            <h3>Cuando el trabajo esta bien estructurado, la empresa gana:</h3>
+            <ul class="list">
+              <li>Menos improvisacion en la operacion diaria</li>
+              <li>Mas velocidad para detectar problemas reales</li>
+              <li>Mas previsibilidad para crecer sin perder control</li>
+              <li>Mas confianza interna y externa sobre como funciona la empresa</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="proceso">
+        <div class="container">
+          <div class="section-heading fade-up">
+            <h2>Como trabajamos</h2>
+            <p>
+              Acompanamos a cada empresa desde el relevamiento inicial hasta la implementacion, cuidando que la
+              tecnologia se adapte al negocio y no al reves.
+            </p>
+          </div>
+
+          <div class="process-grid">
+            <article class="process-step fade-up delay-1">
+              <span>01</span>
+              <h3>Escuchamos y relevamos</h3>
+              <p>Analizamos la operacion actual, sus puntos ciegos y lo que hoy frena la gestion.</p>
+            </article>
+            <article class="process-step fade-up delay-2">
+              <span>02</span>
+              <h3>Definimos estructura</h3>
+              <p>Traducimos la necesidad del negocio en un proceso claro, con objetivos y criterios medibles.</p>
+            </article>
+            <article class="process-step fade-up delay-3">
+              <span>03</span>
+              <h3>Construimos e implementamos</h3>
+              <p>Desarrollamos la solucion y acompanamos su adopcion para que el cambio sea util en la practica.</p>
+            </article>
+            <article class="process-step fade-up delay-4">
+              <span>04</span>
+              <h3>Consolidamos control</h3>
+              <p>Dejamos una base operativa mas profesional, visible y preparada para escalar.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-heading fade-up">
+            <h2>Senales de que tu pyme necesita ordenar su operacion</h2>
+            <p>
+              Si varias de estas situaciones te resultan familiares, probablemente no necesites mas esfuerzo del equipo:
+              necesitas una mejor estructura.
+            </p>
+          </div>
+
+          <div class="proof-grid">
+            <article class="section-card fade-up delay-1">
+              <h3>Seguimientos manuales permanentes</h3>
+              <p>El trabajo avanza solo si alguien controla por chat, llamada o recordatorio constante.</p>
+            </article>
+            <article class="section-card fade-up delay-2">
+              <h3>Informacion dispersa</h3>
+              <p>Los datos clave estan repartidos entre distintas herramientas y nadie confia del todo en ellos.</p>
+            </article>
+            <article class="section-card fade-up delay-3">
+              <h3>Dependencia de personas clave</h3>
+              <p>Cuando alguien falta, el proceso se frena porque el conocimiento no esta sistematizado.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="lead-section">
+        <div class="container lead-grid">
+          <div class="section-heading fade-up">
+            <h2>Conversemos sobre tu operacion</h2>
+            <p>
+              Si queres entender donde se esta perdiendo tiempo, control o visibilidad, completa el formulario y
+              coordinamos una primera conversacion. La idea es simple: detectar si hay una oportunidad concreta para
+              ordenar y automatizar sin agregar complejidad innecesaria.
+            </p>
+            <div class="contact-points">
+              <div class="contact-chip">Diagnostico inicial</div>
+              <div class="contact-chip">Enfoque consultivo</div>
+              <div class="contact-chip">Soluciones pensadas para pymes</div>
             </div>
-            <div class="contact_form_shell">
-              <form class="contact_form" action="enviar.php" method="POST">
-                <div>
-                  <input type="text" name="nombre" placeholder="Nombre completo" required>
-                </div>
-                <div>
-                  <input type="text" name="telefono" placeholder="Telefono de contacto" required>
-                </div>
-                <div>
-                  <input type="email" name="email" placeholder="Correo electronico" required>
-                </div>
-                <div>
-                  <textarea name="mensaje" placeholder="Contanos brevemente que necesita tu empresa" required></textarea>
-                </div>
-                <button type="submit" class="button_primary button_full" onclick="gtag('event', 'click_enviar_formulario', { event_category: 'formulario', event_label: 'contacto' })">Enviar consulta</button>
-              </form>
-            </div>
+          </div>
+
+          <div class="form-card fade-up delay-2">
+            <h3>Solicitar contacto</h3>
+            <p class="form-note">Dejanos tus datos y una breve descripcion del desafio que queres resolver.</p>
+
+            <form>
+              <div class="field-row">
+                <label for="nombre">
+                  Nombre
+                  <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+                </label>
+                <label for="empresa">
+                  Empresa
+                  <input id="empresa" name="empresa" type="text" placeholder="Nombre de la empresa" required>
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label for="email">
+                  Email
+                  <input id="email" name="email" type="email" placeholder="nombre@empresa.com" required>
+                </label>
+                <label for="telefono">
+                  Telefono
+                  <input id="telefono" name="telefono" type="tel" placeholder="+54 9 ..." required>
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label for="equipo">
+                  Tamano del equipo
+                  <select id="equipo" name="equipo">
+                    <option value="">Seleccionar</option>
+                    <option>1 a 10 personas</option>
+                    <option>11 a 30 personas</option>
+                    <option>31 a 100 personas</option>
+                    <option>Mas de 100 personas</option>
+                  </select>
+                </label>
+                <label for="objetivo">
+                  Principal necesidad
+                  <select id="objetivo" name="objetivo">
+                    <option value="">Seleccionar</option>
+                    <option>Ordenar procesos</option>
+                    <option>Automatizar tareas</option>
+                    <option>Centralizar informacion</option>
+                    <option>Mejorar control operativo</option>
+                  </select>
+                </label>
+              </div>
+
+              <label for="mensaje">
+                Contanos brevemente que esta pasando hoy
+                <textarea id="mensaje" name="mensaje" placeholder="Ejemplo: hoy tenemos informacion repartida en varias planillas y nos cuesta hacer seguimiento del trabajo."></textarea>
+              </label>
+
+              <div class="form-footer">
+                <p class="form-note">Respuesta orientativa en una primera conversacion para entender contexto y prioridad.</p>
+                <button class="btn btn-primary" type="submit">Quiero que me contacten</button>
+              </div>
+            </form>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site_footer">
-      <div class="container footer_inner">
-        <p>&copy; 2026 impulsa group. Todos los derechos reservados.</p>
-        <a href="#contacto">Iniciar una conversacion</a>
+    <footer>
+      <div class="container">
+        Impulsa. Consultora de desarrollo de software para pymes que buscan operar con mas claridad, control y eficiencia.
       </div>
     </footer>
   </div>
-
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script>
-    (function () {
-      var toggle = document.querySelector('.nav_toggle');
-      var menu = document.querySelector('.nav_menu');
-
-      if (!toggle || !menu) return;
-
-      toggle.addEventListener('click', function () {
-        var isOpen = menu.classList.toggle('is_open');
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-
-      menu.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          menu.classList.remove('is_open');
-          toggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-    })();
-  </script>
 </body>
-
 </html>
