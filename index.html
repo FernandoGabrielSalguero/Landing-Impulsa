@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GP6NMLG283"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GP6NMLG283');
-</script>
-
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GP6NMLG283"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-GP6NMLG283');
+  </script>
   <title>Impulsa</title>
-  <meta
-    name="description"
-    content="Impulsa acompana a pymes a ordenar, automatizar y controlar sus operaciones mediante soluciones de software claras, medibles y escalables."
-  >
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  
+  <meta name="description"
+    content="Impulsa acompana a pymes a ordenar, automatizar y controlar sus operaciones mediante soluciones de software claras, medibles y escalables.">
   <style>
+    @font-face {
+      font-family: "Montserrat";
+      src: url("assets/marcas/impulsa/fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format("truetype");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
-      --bg: #f4efe7;
-      --bg-soft: #fbf8f3;
-      --surface: rgba(255, 255, 255, 0.8);
-      --surface-strong: #fffdf9;
-      --text: #182127;
-      --muted: #5f6a70;
-      --line: rgba(24, 33, 39, 0.12);
-      --primary: #0d6b5f;
-      --primary-dark: #0b564c;
-      --accent: #d97941;
-      --accent-soft: rgba(217, 121, 65, 0.14);
-      --shadow: 0 24px 80px rgba(24, 33, 39, 0.12);
+      --bg: #f4f8fb;
+      --surface: rgba(255, 255, 255, .92);
+      --card: #fff;
+      --text: #112c4e;
+      --muted: #4f6482;
+      --line: rgba(17, 44, 78, .12);
+      --primary: #112c4e;
+      --primary-dark: #091a30;
+      --secondary: #2eb3ba;
+      --secondary-soft: rgba(46, 179, 186, .12);
+      --shadow: 0 24px 80px rgba(17, 44, 78, .12);
       --radius-xl: 32px;
       --radius-lg: 24px;
       --radius-md: 18px;
@@ -52,12 +52,12 @@
 
     body {
       margin: 0;
-      font-family: "Manrope", "Segoe UI", sans-serif;
+      font-family: "Montserrat", "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(13, 107, 95, 0.16), transparent 30%),
-        radial-gradient(circle at right 10% top 20%, rgba(217, 121, 65, 0.16), transparent 20%),
-        linear-gradient(180deg, #f7f3eb 0%, #f3ece2 42%, #fcfaf6 100%);
+        radial-gradient(circle at top left, rgba(46, 179, 186, .16), transparent 28%),
+        radial-gradient(circle at right 10% top 16%, rgba(17, 44, 78, .14), transparent 22%),
+        linear-gradient(180deg, #f7fbfd 0%, #eef5fa 44%, #fff 100%);
     }
 
     a {
@@ -70,10 +70,6 @@
       display: block;
     }
 
-    .page-shell {
-      overflow: hidden;
-    }
-
     .container {
       width: min(calc(100% - 2rem), var(--container));
       margin: 0 auto;
@@ -84,60 +80,49 @@
       top: 0;
       z-index: 10;
       backdrop-filter: blur(18px);
-      background: rgba(251, 248, 243, 0.8);
-      border-bottom: 1px solid rgba(24, 33, 39, 0.08);
+      background: rgba(255, 255, 255, .82);
+      border-bottom: 1px solid rgba(17, 44, 78, .08);
+    }
+
+    .topbar-inner,
+    .hero-actions,
+    .stat-row,
+    .contact-points,
+    .highlight-band,
+    .form-footer {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .topbar-inner {
-      display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 1rem;
       padding: 1rem 0;
     }
 
-    .brand {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .brand-mark {
-      width: 2.4rem;
-      height: 2.4rem;
-      border-radius: 14px;
-      background:
-        linear-gradient(145deg, rgba(13, 107, 95, 0.95), rgba(11, 86, 76, 0.95));
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 26px rgba(13, 107, 95, 0.28);
+    .brand img {
+      height: clamp(2.7rem, 4vw, 3.3rem);
+      width: auto;
     }
 
     .nav {
       display: flex;
-      align-items: center;
       gap: 1.2rem;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: .95rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
       border: 0;
+      cursor: pointer;
       border-radius: 999px;
-      padding: 0.95rem 1.4rem;
+      padding: .95rem 1.4rem;
       font: inherit;
       font-weight: 700;
-      cursor: pointer;
       transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
     }
 
@@ -148,100 +133,181 @@
     .btn-primary {
       color: #fff;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      box-shadow: 0 14px 34px rgba(13, 107, 95, 0.28);
+      box-shadow: 0 14px 34px rgba(17, 44, 78, .24);
     }
 
     .btn-secondary {
       color: var(--text);
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(24, 33, 39, 0.08);
+      background: rgba(255, 255, 255, .82);
+      border: 1px solid rgba(17, 44, 78, .08);
     }
 
     .hero {
-      padding: 4.5rem 0 3rem;
+      padding: 4.5rem 0 2rem;
+    }
+
+    .hero-grid,
+    .logo-grid,
+    .story-grid,
+    .services-grid,
+    .vision-grid,
+    .process-grid,
+    .proof-grid,
+    .lead-grid,
+    .flow-grid,
+    .field-row,
+    .impulsa-marks,
+    .client-logos {
+      display: grid;
+      gap: 1rem;
     }
 
     .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
       gap: 2rem;
       align-items: center;
+    }
+
+    .logo-grid {
+      grid-template-columns: .95fr 1.05fr;
+    }
+
+    .story-grid {
+      grid-template-columns: 1.05fr .95fr;
+    }
+
+    .services-grid,
+    .proof-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .vision-grid {
+      grid-template-columns: 1.1fr .9fr;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .lead-grid {
+      grid-template-columns: .9fr 1.1fr;
+      align-items: start;
+    }
+
+    .flow-grid,
+    .field-row,
+    .impulsa-marks {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .client-logos {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      padding: 0.55rem 0.9rem;
+      gap: .6rem;
+      padding: .55rem .9rem;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(24, 33, 39, 0.08);
-      color: var(--primary-dark);
-      font-size: 0.9rem;
+      background: rgba(255, 255, 255, .82);
+      border: 1px solid rgba(17, 44, 78, .08);
+      color: var(--primary);
+      font-size: .9rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
+    }
+
+    .hero h1,
+    .section-heading h2 {
+      margin: 0;
+      font-family: "Montserrat", "Segoe UI", sans-serif;
+      letter-spacing: -.05em;
+      line-height: .95;
     }
 
     .hero h1 {
-      margin: 1rem 0 1rem;
-      font-family: "Space Grotesk", sans-serif;
+      margin-top: 1rem;
       font-size: clamp(2.8rem, 7vw, 5.6rem);
-      line-height: 0.95;
-      letter-spacing: -0.06em;
       max-width: 12ch;
     }
 
-    .hero p {
+    .section-heading {
+      display: grid;
+      gap: .85rem;
+      margin-bottom: 1.6rem;
+      max-width: 62ch;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1;
+    }
+
+    .hero p,
+    .section-heading p,
+    .flow-card p,
+    .section-card p,
+    .quote-card p,
+    .process-step p,
+    .story-panel p,
+    .logo-card p,
+    .service-bullet p,
+    .form-note,
+    .list li {
       margin: 0;
-      max-width: 58ch;
       color: var(--muted);
-      font-size: 1.08rem;
       line-height: 1.75;
     }
 
-    .hero-actions,
-    .stat-row,
-    .contact-points {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-    }
-
-    .hero-actions {
-      margin-top: 1.8rem;
+    .hero p {
+      max-width: 58ch;
+      font-size: 1.08rem;
     }
 
     .stat-row {
       margin-top: 2rem;
     }
 
+    .stat-card,
+    .flow-card,
+    .section-card,
+    .quote-card,
+    .form-card,
+    .logo-card,
+    .service-panel,
+    .process-step,
+    .story-aside .section-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 14px 40px rgba(17, 44, 78, .05);
+    }
+
     .stat-card {
       min-width: 170px;
       padding: 1rem 1.1rem;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(24, 33, 39, 0.08);
-      box-shadow: 0 14px 40px rgba(24, 33, 39, 0.06);
+      background: rgba(255, 255, 255, .76);
     }
 
     .stat-card strong {
       display: block;
       font-size: 1.45rem;
-      letter-spacing: -0.04em;
-      margin-bottom: 0.2rem;
+      letter-spacing: -.04em;
+      margin-bottom: .2rem;
     }
 
     .hero-panel {
       position: relative;
       padding: 1.4rem;
       border-radius: var(--radius-xl);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 253, 249, 0.96));
-      border: 1px solid rgba(24, 33, 39, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(244, 250, 252, .98));
+      border: 1px solid rgba(17, 44, 78, .08);
       box-shadow: var(--shadow);
     }
 
     .hero-panel::before,
-    .hero-panel::after {
+    .hero-panel::after,
+    .story-panel::after {
       content: "";
       position: absolute;
       border-radius: 24px;
@@ -252,17 +318,19 @@
       inset: auto -1rem -1rem auto;
       width: 140px;
       height: 140px;
-      background: rgba(217, 121, 65, 0.16);
+      background: rgba(46, 179, 186, .18);
     }
 
     .hero-panel::after {
       inset: -1.25rem auto auto -1.25rem;
       width: 90px;
       height: 90px;
-      background: rgba(13, 107, 95, 0.16);
+      background: rgba(17, 44, 78, .16);
     }
 
-    .board {
+    .board,
+    .story-points,
+    .story-aside {
       display: grid;
       gap: 1rem;
     }
@@ -277,188 +345,175 @@
     .board-title {
       font-weight: 800;
       font-size: 1.2rem;
-      letter-spacing: -0.03em;
+      letter-spacing: -.03em;
     }
 
     .board-meta {
       color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .flow-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
+      font-size: .92rem;
     }
 
     .flow-card,
-    .mini-card,
     .section-card,
+    .quote-card,
     .form-card,
-    .quote-card {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--line);
-      background: var(--surface-strong);
-    }
-
-    .flow-card {
-      padding: 1.1rem;
+    .logo-card,
+    .service-panel,
+    .process-step {
+      padding: 1.4rem;
     }
 
     .flow-card span,
-    .process-step span {
+    .process-step span,
+    .story-point span,
+    .service-bullet span {
       display: inline-flex;
       width: 2rem;
       height: 2rem;
       border-radius: 999px;
       align-items: center;
       justify-content: center;
-      background: var(--accent-soft);
-      color: var(--accent);
       font-weight: 800;
-      margin-bottom: 0.8rem;
     }
 
-    .flow-card h3,
-    .section-card h3,
-    .process-step h3,
-    .form-card h3,
-    .quote-card h3 {
-      margin: 0 0 0.6rem;
-      font-size: 1.05rem;
-      letter-spacing: -0.03em;
+    .flow-card span,
+    .process-step span,
+    .service-bullet span {
+      background: var(--secondary-soft);
+      color: var(--secondary);
     }
 
-    .flow-card p,
-    .section-card p,
-    .process-step p,
-    .quote-card p,
-    .form-note,
-    .list li {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
+    .flow-card span,
+    .process-step span {
+      margin-bottom: .8rem;
+    }
+
+    .section-card strong {
+      display: inline-block;
+      margin-bottom: .7rem;
+      color: var(--secondary);
+      font-size: .92rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
     }
 
     section {
       padding: 1.75rem 0;
     }
 
-    .section-heading {
+    .logo-card p {
+      margin-bottom: 1rem;
+    }
+
+    .impulsa-mark,
+    .client-logo {
       display: grid;
-      gap: 0.85rem;
-      margin-bottom: 1.6rem;
-      max-width: 62ch;
+      place-items: center;
+      border-radius: 20px;
+      border: 1px solid rgba(17, 44, 78, .08);
+      background: #fff;
     }
 
-    .section-heading h2 {
-      margin: 0;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(2rem, 4vw, 3.25rem);
-      line-height: 1;
-      letter-spacing: -0.05em;
+    .impulsa-mark {
+      min-height: 92px;
+      padding: 1rem;
+      background: linear-gradient(180deg, rgba(17, 44, 78, .05), rgba(46, 179, 186, .08));
     }
 
-    .section-heading p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 1.03rem;
+    .impulsa-mark img {
+      max-height: 44px;
+      width: auto;
     }
 
-    .problem-grid,
-    .services-grid,
-    .proof-grid,
-    .vision-grid,
-    .process-grid {
+    .client-logo {
+      min-height: 82px;
+      padding: 1rem;
+    }
+
+    .client-logo img {
+      max-height: 38px;
+      width: auto;
+      filter: saturate(.9);
+    }
+
+    .story-panel {
+      position: relative;
+      padding: 1.9rem;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(160deg, var(--primary), #173e6d 62%, #1e5a86 100%);
+      color: #f4fbff;
+      box-shadow: 0 24px 60px rgba(17, 44, 78, .18);
+      overflow: hidden;
+    }
+
+    .story-panel::after {
+      inset: auto -2.5rem -2.5rem auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: rgba(46, 179, 186, .18);
+    }
+
+    .story-panel h3,
+    .service-panel h3 {
+      margin: 0 0 .8rem;
+      font-size: 1.35rem;
+      letter-spacing: -.04em;
+    }
+
+    .story-panel p {
+      color: rgba(244, 251, 255, .9);
+    }
+
+    .story-point,
+    .service-bullet {
       display: grid;
-      gap: 1rem;
+      grid-template-columns: auto 1fr;
+      gap: .75rem;
+      align-items: start;
     }
 
-    .problem-grid,
-    .services-grid,
-    .proof-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+    .story-point span {
+      background: rgba(46, 179, 186, .18);
+      color: #8ef1f3;
     }
 
-    .vision-grid {
-      grid-template-columns: 1.1fr 0.9fr;
+    .story-aside .section-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, .97), rgba(241, 249, 251, .98));
     }
 
-    .process-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .service-panel {
+      background: linear-gradient(180deg, rgba(255, 255, 255, .98), rgba(239, 247, 250, .98));
     }
 
-    .section-card,
-    .quote-card,
-    .form-card {
-      padding: 1.5rem;
-      box-shadow: 0 14px 40px rgba(24, 33, 39, 0.05);
+    .service-icon {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      margin-bottom: 1rem;
     }
 
-    .section-card strong {
-      display: inline-block;
-      margin-bottom: 0.7rem;
-      color: var(--primary-dark);
-      font-size: 0.92rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .list {
-      margin: 1rem 0 0;
-      padding-left: 1.1rem;
-    }
-
-    .list li + li {
-      margin-top: 0.6rem;
+    .service-bullet+.service-bullet {
+      margin-top: .8rem;
     }
 
     .highlight-band {
       margin-top: 2rem;
       padding: 1.4rem 1.5rem;
       border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, rgba(13, 107, 95, 0.96), rgba(11, 86, 76, 0.96));
-      color: #edf8f5;
-      display: flex;
+      background: linear-gradient(135deg, rgba(17, 44, 78, .98), rgba(25, 74, 119, .96));
+      color: #edf8fd;
       justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      box-shadow: 0 20px 40px rgba(13, 107, 95, 0.24);
+      box-shadow: 0 20px 40px rgba(17, 44, 78, .2);
     }
 
     .highlight-band p {
-      margin: 0;
+      color: inherit;
       max-width: 54ch;
-      line-height: 1.7;
     }
 
     .quote-card {
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(249, 243, 234, 0.96));
-    }
-
-    .quote-card p {
-      font-size: 1.08rem;
-    }
-
-    .process-step {
-      padding: 1.4rem;
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.84);
-      border: 1px solid var(--line);
-    }
-
-    .lead-section {
-      padding: 2.2rem 0 5rem;
-    }
-
-    .lead-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 1.2rem;
-      align-items: start;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .97), rgba(239, 247, 250, .96));
     }
 
     .contact-points {
@@ -466,34 +521,24 @@
     }
 
     .contact-chip {
-      padding: 0.85rem 1rem;
+      padding: .85rem 1rem;
       border-radius: 18px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, .76);
       color: var(--muted);
       font-weight: 600;
     }
 
-    .form-card {
-      background: rgba(255, 253, 249, 0.96);
-    }
-
     form {
       display: grid;
-      gap: 0.95rem;
+      gap: .95rem;
       margin-top: 1rem;
-    }
-
-    .field-row {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.95rem;
     }
 
     label {
       display: grid;
-      gap: 0.45rem;
-      font-size: 0.95rem;
+      gap: .45rem;
+      font-size: .95rem;
       font-weight: 700;
       color: var(--text);
     }
@@ -502,9 +547,9 @@
     textarea,
     select {
       width: 100%;
-      border: 1px solid rgba(24, 33, 39, 0.14);
+      border: 1px solid rgba(17, 44, 78, .14);
       border-radius: 16px;
-      padding: 0.95rem 1rem;
+      padding: .95rem 1rem;
       font: inherit;
       color: var(--text);
       background: #fff;
@@ -515,8 +560,8 @@
     textarea:focus,
     select:focus {
       outline: none;
-      border-color: rgba(13, 107, 95, 0.55);
-      box-shadow: 0 0 0 4px rgba(13, 107, 95, 0.1);
+      border-color: rgba(46, 179, 186, .6);
+      box-shadow: 0 0 0 4px rgba(46, 179, 186, .12);
     }
 
     textarea {
@@ -525,23 +570,24 @@
     }
 
     .form-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      align-items: center;
       justify-content: space-between;
-      margin-top: 0.2rem;
-    }
-
-    .form-note {
-      font-size: 0.92rem;
+      margin-top: .2rem;
     }
 
     footer {
-      border-top: 1px solid rgba(24, 33, 39, 0.08);
+      border-top: 1px solid rgba(17, 44, 78, .08);
       padding: 1.4rem 0 2rem;
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: .92rem;
+    }
+
+    .list {
+      margin: 1rem 0 0;
+      padding-left: 1.1rem;
+    }
+
+    .list li+li {
+      margin-top: .6rem;
     }
 
     .fade-up {
@@ -550,10 +596,21 @@
       animation: fadeUp 700ms ease forwards;
     }
 
-    .delay-1 { animation-delay: 120ms; }
-    .delay-2 { animation-delay: 220ms; }
-    .delay-3 { animation-delay: 320ms; }
-    .delay-4 { animation-delay: 420ms; }
+    .delay-1 {
+      animation-delay: 120ms;
+    }
+
+    .delay-2 {
+      animation-delay: 220ms;
+    }
+
+    .delay-3 {
+      animation-delay: 320ms;
+    }
+
+    .delay-4 {
+      animation-delay: 420ms;
+    }
 
     @keyframes fadeUp {
       to {
@@ -563,18 +620,24 @@
     }
 
     @media (max-width: 980px) {
+
       .hero-grid,
-      .vision-grid,
-      .lead-grid,
-      .problem-grid,
+      .logo-grid,
+      .story-grid,
       .services-grid,
+      .vision-grid,
+      .process-grid,
       .proof-grid,
-      .process-grid {
+      .lead-grid {
         grid-template-columns: 1fr;
       }
 
       .nav {
         display: none;
+      }
+
+      .client-logos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -583,8 +646,10 @@
         padding-top: 2.6rem;
       }
 
+      .flow-grid,
       .field-row,
-      .flow-grid {
+      .impulsa-marks,
+      .client-logos {
         grid-template-columns: 1fr;
       }
 
@@ -593,13 +658,10 @@
       }
 
       .topbar-inner {
-        padding: 0.9rem 0;
+        padding: .9rem 0;
       }
 
-      .btn {
-        width: 100%;
-      }
-
+      .btn,
       .hero-actions .btn,
       .form-footer .btn {
         width: 100%;
@@ -607,13 +669,13 @@
     }
   </style>
 </head>
+
 <body>
   <div class="page-shell">
     <header class="topbar">
       <div class="container topbar-inner">
         <a class="brand" href="#inicio" aria-label="Impulsa, inicio">
-          <span class="brand-mark">I</span>
-          <span>Impulsa</span>
+          <img src="assets/marcas/impulsa/Marca impulsa Original Color.png" alt="Marca Impulsa">
         </a>
         <nav class="nav" aria-label="Principal">
           <a href="#servicios">Servicios</a>
@@ -631,11 +693,16 @@
           <div>
             <div class="eyebrow fade-up">Consultora de desarrollo de software</div>
             <h1 class="fade-up delay-1">Ordena tu operacion. Automatiza lo repetitivo. Gana control.</h1>
+            <br>
+            <br>
             <p class="fade-up delay-2">
               Impulsa acompana a pymes que crecieron entre planillas, mensajes y procesos manuales, y hoy necesitan
               estructura para operar con claridad. Disenamos e implementamos soluciones de software que convierten el
               caos operativo en un sistema medible, confiable y escalable.
             </p>
+            <br>
+            <br>
+            <br>
             <div class="hero-actions fade-up delay-3">
               <a class="btn btn-primary" href="#contacto">Quiero una reunion</a>
               <a class="btn btn-secondary" href="#servicios">Ver como trabajamos</a>
@@ -648,27 +715,23 @@
                   <div class="board-title">De procesos dispersos a una operacion profesional</div>
                   <div class="board-meta">Tecnologia con estructura, no complejidad</div>
                 </div>
-                <span class="eyebrow">Impulsa</span>
+                <img src="assets/marcas/impulsa/Isotipo triple.png" alt="Isotipo Impulsa"
+                  style="width: 6rem; height: 6rem; object-fit: contain;">
               </div>
-
               <div class="flow-grid">
-                <article class="flow-card">
-                  <span>1</span>
+                <article class="flow-card"><span>1</span>
                   <h3>Relevamiento y diagnostico</h3>
                   <p>Entendemos como trabaja la empresa hoy, donde se pierde tiempo y donde falta trazabilidad.</p>
                 </article>
-                <article class="flow-card">
-                  <span>2</span>
+                <article class="flow-card"><span>2</span>
                   <h3>Diseno de solucion</h3>
                   <p>Traducimos la operacion en un sistema claro, con procesos definidos y datos utiles.</p>
                 </article>
-                <article class="flow-card">
-                  <span>3</span>
+                <article class="flow-card"><span>3</span>
                   <h3>Desarrollo e implementacion</h3>
                   <p>Construimos la herramienta adecuada y acompanamos su adopcion dentro del equipo.</p>
                 </article>
-                <article class="flow-card">
-                  <span>4</span>
+                <article class="flow-card"><span>4</span>
                   <h3>Control y escalabilidad</h3>
                   <p>La empresa gana visibilidad operativa para crecer con menos improvisacion.</p>
                 </article>
@@ -682,36 +745,48 @@
         <div class="container">
           <div class="section-heading fade-up">
             <h2>La tecnologia no deberia agregar mas ruido.</h2>
-            <p>
-              Muchas pymes ya saben que necesitan software, pero no cualquier software. Necesitan estructura:
-              procesos claros, datos confiables y una operacion que no dependa del desorden ni de personas que
-              "tienen todo en la cabeza".
-            </p>
+            <p>Muchas empresas ya saben que necesitan software, pero no cualquier software. Necesitan estructura:
+              procesos claros, datos confiables y una operacion que no dependa del desorden ni de personas que "tienen
+              todo en la cabeza".</p>
           </div>
-
-          <div class="problem-grid">
-            <article class="section-card fade-up delay-1">
-              <strong>Problema frecuente</strong>
-              <h3>Procesos repartidos entre planillas, chats y memoria operativa</h3>
-              <p>Eso dificulta el seguimiento, genera errores y vuelve lenta cualquier mejora.</p>
+          <div class="story-grid">
+            <article class="story-panel fade-up delay-1">
+              <h3>Convertimos caos operativo en una base clara para crecer</h3>
+              <p>Acompanamos a cada empresa desde el relevamiento y analisis hasta el diseno, desarrollo e
+                implementacion de la solucion, con foco en que la tecnologia no agregue complejidad, sino estructura
+                util para operar.</p>
+              <br>
+              <br>
+              <div class="story-points">
+                <div class="story-point"><span>01</span>
+                  <p>Detectamos donde se pierde tiempo, trazabilidad y capacidad de respuesta.</p>
+                </div>
+                <div class="story-point"><span>02</span>
+                  <p>Traducimos la operacion real en procesos claros y sostenibles para el equipo.</p>
+                </div>
+                <div class="story-point"><span>03</span>
+                  <p>Implementamos software que ayuda a decidir mejor, no solo a digitalizar problemas.</p>
+                </div>
+              </div>
             </article>
-            <article class="section-card fade-up delay-2">
-              <strong>Lo que hacemos</strong>
-              <h3>Ordenamos y automatizamos la operacion con software a medida</h3>
-              <p>Definimos como deberia funcionar el proceso y construimos la solucion para sostenerlo.</p>
-            </article>
-            <article class="section-card fade-up delay-3">
-              <strong>El objetivo</strong>
-              <h3>Que los lideres decidan mejor y el equipo trabaje con mas control</h3>
-              <p>Menos incendios operativos. Mas foco en crecimiento, gestion y estrategia.</p>
-            </article>
+            <div class="story-aside">
+              <article class="section-card fade-up delay-2">
+                <strong>Nuestra Mision</strong>
+                <h3>Ordenar y automatizar para liberar foco estrategico</h3>
+                <p>Acompanamos a las pymes a ordenar y automatizar sus procesos mediante soluciones de software que les
+                  permitan operar con mayor claridad, control y eficiencia.</p>
+              </article>
+              <article class="section-card fade-up delay-3">
+                <strong>Nuestra Vision</strong>
+                <h3>Ser referencia en profesionalizacion operativa para pymes</h3>
+                <p>Queremos que Impulsa sea un sello de procesos claros, datos confiables, transparencia y control para
+                  empresas que quieren crecer con una estructura mas solida.</p>
+              </article>
+            </div>
           </div>
-
           <div class="highlight-band fade-up delay-4">
-            <p>
-              Nuestra mision es acompanarte a ordenar y automatizar tus procesos para que puedan operar con
-              mayor claridad, control y eficiencia, liberando tu tiempo para que puedas enfocarte en decisiones estrategicas.
-            </p>
+            <p>Cuando la operacion esta bien disenada, los lideres dejan de apagar incendios y recuperan tiempo para
+              tomar decisiones de crecimiento con informacion confiable.</p>
             <a class="btn btn-secondary" href="#contacto">Hablar con Impulsa</a>
           </div>
         </div>
@@ -721,39 +796,50 @@
         <div class="container">
           <div class="section-heading fade-up">
             <h2>Que resuelve Impulsa</h2>
-            <p>
-              No vendemos tecnologia aislada. Disenamos soluciones que mejoran el funcionamiento de la empresa y le
-              dan soporte a su crecimiento.
-            </p>
+            <p>No vendemos tecnologia aislada. Disenamos soluciones que mejoran el funcionamiento de la empresa y le dan
+              soporte a su crecimiento.</p>
           </div>
-
           <div class="services-grid">
-            <article class="section-card fade-up delay-1">
+            <article class="service-panel fade-up delay-1">
+              <img class="service-icon" src="assets/marcas/impulsa/Icono analisis de datos.png"
+                alt="Icono analisis de datos">
               <h3>Orden operativo</h3>
-              <p>Mapeamos procesos, detectamos cuellos de botella y proponemos una estructura operativa mas clara.</p>
-              <ul class="list">
-                <li>Flujos definidos</li>
-                <li>Roles y responsabilidades mas visibles</li>
-                <li>Menos dependencias informales</li>
-              </ul>
+              <div class="service-bullet"><span>1</span>
+                <p>Mapeamos procesos, roles y puntos de friccion para construir una estructura mas clara.</p>
+              </div>
+              <div class="service-bullet"><span>2</span>
+                <p>Reducimos dependencias informales que hoy frenan el trabajo o lo hacen impredecible.</p>
+              </div>
+              <div class="service-bullet"><span>3</span>
+                <p>Definimos una base operativa que pueda sostener crecimiento sin perder visibilidad.</p>
+              </div>
             </article>
-            <article class="section-card fade-up delay-2">
+            <article class="service-panel fade-up delay-2">
+              <img class="service-icon" src="assets/marcas/impulsa/Icono desarrollo web.png" alt="Icono desarrollo web">
               <h3>Automatizacion inteligente</h3>
-              <p>Eliminamos tareas manuales repetitivas y reducimos errores con procesos asistidos por software.</p>
-              <ul class="list">
-                <li>Seguimiento de operaciones</li>
-                <li>Alertas y validaciones</li>
-                <li>Carga de datos mas confiable</li>
-              </ul>
+              <div class="service-bullet"><span>1</span>
+                <p>Eliminamos tareas manuales repetitivas que consumen tiempo y generan errores evitables.</p>
+              </div>
+              <div class="service-bullet"><span>2</span>
+                <p>Integramos seguimiento, validaciones y alertas para que el proceso avance con menos friccion.</p>
+              </div>
+              <div class="service-bullet"><span>3</span>
+                <p>La operacion queda soportada por una herramienta concreta, no por memoria o urgencia.</p>
+              </div>
             </article>
-            <article class="section-card fade-up delay-3">
+            <article class="service-panel fade-up delay-3">
+              <img class="service-icon" src="assets/marcas/impulsa/Icono inteligencia artificial.png"
+                alt="Icono inteligencia artificial">
               <h3>Control y trazabilidad</h3>
-              <p>Centralizamos informacion para que cada decision tenga soporte y cada proceso deje evidencia.</p>
-              <ul class="list">
-                <li>Indicadores operativos</li>
-                <li>Datos consistentes</li>
-                <li>Visibilidad para lideres y equipos</li>
-              </ul>
+              <div class="service-bullet"><span>1</span>
+                <p>Centralizamos informacion para que cada decision tenga un respaldo claro y actualizado.</p>
+              </div>
+              <div class="service-bullet"><span>2</span>
+                <p>Generamos indicadores utiles para lideres que necesitan ver problemas antes de que escalen.</p>
+              </div>
+              <div class="service-bullet"><span>3</span>
+                <p>Dejamos evidencia de cada proceso para mejorar control, seguimiento y aprendizaje interno.</p>
+              </div>
             </article>
           </div>
         </div>
@@ -763,11 +849,9 @@
         <div class="container vision-grid">
           <article class="quote-card fade-up">
             <h3>Vision</h3>
-            <p>
-              Queremos que Impulsa sea la consultora referente en profesionalizacion operativa para pymes: un sello de
+            <p>Queremos que Impulsa sea la consultora referente en profesionalizacion operativa para pymes: un sello de
               procesos claros, datos confiables, transparencia y control. Una empresa mejor ordenada es una empresa con
-              mas capacidad para crecer y generar confianza frente a clientes, socios e inversores.
-            </p>
+              mas capacidad para crecer y generar confianza frente a clientes, socios e inversores.</p>
           </article>
           <article class="section-card fade-up delay-2">
             <h3>Cuando el trabajo esta bien estructurado, la empresa gana:</h3>
@@ -785,30 +869,23 @@
         <div class="container">
           <div class="section-heading fade-up">
             <h2>Como trabajamos</h2>
-            <p>
-              Acompanamos a cada empresa desde el relevamiento inicial hasta la implementacion, cuidando que la
-              tecnologia se adapte al negocio y no al reves.
-            </p>
+            <p>Acompanamos a cada empresa desde el relevamiento inicial hasta la implementacion, cuidando que la
+              tecnologia se adapte al negocio y no al reves.</p>
           </div>
-
           <div class="process-grid">
-            <article class="process-step fade-up delay-1">
-              <span>01</span>
+            <article class="process-step fade-up delay-1"><span>01</span>
               <h3>Escuchamos y relevamos</h3>
               <p>Analizamos la operacion actual, sus puntos ciegos y lo que hoy frena la gestion.</p>
             </article>
-            <article class="process-step fade-up delay-2">
-              <span>02</span>
+            <article class="process-step fade-up delay-2"><span>02</span>
               <h3>Definimos estructura</h3>
               <p>Traducimos la necesidad del negocio en un proceso claro, con objetivos y criterios medibles.</p>
             </article>
-            <article class="process-step fade-up delay-3">
-              <span>03</span>
+            <article class="process-step fade-up delay-3"><span>03</span>
               <h3>Construimos e implementamos</h3>
               <p>Desarrollamos la solucion y acompanamos su adopcion para que el cambio sea util en la practica.</p>
             </article>
-            <article class="process-step fade-up delay-4">
-              <span>04</span>
+            <article class="process-step fade-up delay-4"><span>04</span>
               <h3>Consolidamos control</h3>
               <p>Dejamos una base operativa mas profesional, visible y preparada para escalar.</p>
             </article>
@@ -820,12 +897,9 @@
         <div class="container">
           <div class="section-heading fade-up">
             <h2>Senales de que necesitas ordenar tu operacion</h2>
-            <p>
-              Si una o varias de estas situaciones te resultan familiares, probablemente no necesites mas esfuerzo del equipo:
-              necesitas una mejor estructura.
-            </p>
+            <p>Si una o varias de estas situaciones te resultan familiares, probablemente no necesites mas esfuerzo del
+              equipo: necesitas una mejor estructura.</p>
           </div>
-
           <div class="proof-grid">
             <article class="section-card fade-up delay-1">
               <h3>Seguimientos manuales permanentes</h3>
@@ -839,6 +913,19 @@
               <h3>Dependencia de personas clave</h3>
               <p>Cuando alguien falta, el proceso se frena porque el conocimiento no esta sistematizado.</p>
             </article>
+            <article class="section-card fade-up delay-1">
+              <h3>Retrabajos por errores evitables</h3>
+              <p>Se repiten tareas porque la informacion llega incompleta, tarde o con versiones distintas.</p>
+            </article>
+            <article class="section-card fade-up delay-2">
+              <h3>Cuellos de botella en aprobaciones</h3>
+              <p>Todo depende de una o dos personas y las decisiones operativas se acumulan sin criterio comun.</p>
+            </article>
+            <article class="section-card fade-up delay-3">
+              <h3>Falta de visibilidad sobre lo que esta pasando</h3>
+              <p>Los lideres se enteran tarde de los problemas porque no hay indicadores ni seguimiento centralizado.
+              </p>
+            </article>
           </div>
         </div>
       </section>
@@ -847,48 +934,33 @@
         <div class="container lead-grid">
           <div class="section-heading fade-up">
             <h2>Conversemos sobre tu operacion</h2>
-            <p>
-              Si queres entender donde se esta perdiendo tiempo, control o visibilidad, completa el formulario y
+            <p>Si queres entender donde se esta perdiendo tiempo, control o visibilidad, completa el formulario y
               coordinamos una primera conversacion. La idea es simple: detectar si hay una oportunidad concreta para
-              ordenar y automatizar sin agregar complejidad innecesaria.
-            </p>
+              ordenar y automatizar sin agregar complejidad innecesaria.</p>
             <div class="contact-points">
               <div class="contact-chip">Diagnostico inicial</div>
               <div class="contact-chip">Enfoque consultivo</div>
               <div class="contact-chip">Soluciones pensadas para pymes</div>
             </div>
           </div>
-
           <div class="form-card fade-up delay-2">
             <h3>Solicitar contacto</h3>
             <p class="form-note">Dejanos tus datos y una breve descripcion del desafio que queres resolver.</p>
-
             <form>
               <div class="field-row">
-                <label for="nombre">
-                  Nombre
-                  <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required>
-                </label>
-                <label for="empresa">
-                  Empresa
-                  <input id="empresa" name="empresa" type="text" placeholder="Nombre de la empresa" required>
-                </label>
+                <label for="nombre">Nombre<input id="nombre" name="nombre" type="text" placeholder="Tu nombre"
+                    required></label>
+                <label for="empresa">Empresa<input id="empresa" name="empresa" type="text"
+                    placeholder="Nombre de la empresa" required></label>
               </div>
-
               <div class="field-row">
-                <label for="email">
-                  Email
-                  <input id="email" name="email" type="email" placeholder="nombre@empresa.com" required>
-                </label>
-                <label for="telefono">
-                  Telefono
-                  <input id="telefono" name="telefono" type="tel" placeholder="+54 9 ..." required>
-                </label>
+                <label for="email">Email<input id="email" name="email" type="email" placeholder="nombre@empresa.com"
+                    required></label>
+                <label for="telefono">Telefono<input id="telefono" name="telefono" type="tel" placeholder="+54 9 ..."
+                    required></label>
               </div>
-
               <div class="field-row">
-                <label for="equipo">
-                  Tamano del equipo
+                <label for="equipo">Tamano del equipo
                   <select id="equipo" name="equipo">
                     <option value="">Seleccionar</option>
                     <option>1 a 10 personas</option>
@@ -897,8 +969,7 @@
                     <option>Mas de 100 personas</option>
                   </select>
                 </label>
-                <label for="objetivo">
-                  Principal necesidad
+                <label for="objetivo">Principal necesidad
                   <select id="objetivo" name="objetivo">
                     <option value="">Seleccionar</option>
                     <option>Ordenar procesos</option>
@@ -908,14 +979,13 @@
                   </select>
                 </label>
               </div>
-
-              <label for="mensaje">
-                Contanos brevemente que esta pasando hoy
-                <textarea id="mensaje" name="mensaje" placeholder="Ejemplo: hoy tenemos informacion repartida en varias planillas y nos cuesta hacer seguimiento del trabajo."></textarea>
+              <label for="mensaje">Contanos brevemente que esta pasando hoy
+                <textarea id="mensaje" name="mensaje"
+                  placeholder="Ejemplo: hoy tenemos informacion repartida en varias planillas y nos cuesta hacer seguimiento del trabajo."></textarea>
               </label>
-
               <div class="form-footer">
-                <p class="form-note">Respuesta orientativa en una primera conversacion para entender contexto y prioridad.</p>
+                <p class="form-note">Respuesta orientativa en una primera conversacion para entender contexto y
+                  prioridad.</p>
                 <button class="btn btn-primary" type="submit">Quiero que me contacten</button>
               </div>
             </form>
@@ -925,10 +995,9 @@
     </main>
 
     <footer>
-      <div class="container">
-        Impulsa. Consultora de desarrollo de software para pymes que buscan operar con mas claridad, control y eficiencia.
-      </div>
+      <div class="container">Todos los derechos reservados 2026</div>
     </footer>
   </div>
 </body>
+
 </html>
