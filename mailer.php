@@ -8,13 +8,16 @@ const REDIRECT_FRAGMENT = 'contacto';
 const CAPTCHA_EXPECTED = '7';
 const MIN_SUBMIT_SECONDS = 3;
 const MAX_SUBMIT_SECONDS = 7200;
+const DEBUG_QUERY_LIMIT = 700;
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    setDebugMessage('Solicitud rechazada: metodo no permitido (' . ($_SERVER['REQUEST_METHOD'] ?? 'unknown') . ').');
     redirectWithStatus('error');
 }
 
 $honeypot = trim((string) ($_POST['website'] ?? ''));
 if ($honeypot !== '') {
+    setDebugMessage('Honeypot activado. Se descarta el envio como posible bot.');
     redirectWithStatus('success');
 }
 
@@ -28,6 +31,11 @@ if (
     $secondsSinceRendered < MIN_SUBMIT_SECONDS ||
     $secondsSinceRendered > MAX_SUBMIT_SECONDS
 ) {
+    setDebugMessage(
+        'Captcha/tiempo invalido. captcha=' . $captcha
+        . ', renderedAt=' . $renderedAt
+        . ', elapsed=' . $secondsSinceRendered . 's.'
+    );
     redirectWithStatus('invalid_captcha');
 }
 
@@ -45,6 +53,7 @@ if (
     $telefono === '' ||
     !filter_var($email, FILTER_VALIDATE_EMAIL)
 ) {
+    setDebugMessage('Validacion invalida. Revisar nombre, empresa, telefono y email.');
     redirectWithStatus('invalid');
 }
 
@@ -71,18 +80,51 @@ try {
         'html_body' => buildHtmlBody($nombre, $empresa, $email, $telefono, $equipo, $objetivo, $mensaje),
     ];
 
+    setDebugMessage(
+        'Intentando envio a ' . CONTACT_RECIPIENT
+        . ' usando host=' . $smtpHost
+        . ', port=' . $smtpPort
+        . ', user=' . $smtpUser . '.'
+    );
     sendMail($mailData);
+    setDebugMessage('Correo enviado correctamente.');
     redirectWithStatus('success');
 } catch (Throwable $exception) {
     error_log('Mailer error: ' . $exception->getMessage());
+    setDebugMessage('Error final: ' . $exception->getMessage());
     redirectWithStatus('error');
 }
 
 function redirectWithStatus(string $status): void
 {
-    $location = REDIRECT_PATH . '?status=' . urlencode($status) . '#' . REDIRECT_FRAGMENT;
+    $debugMessage = getDebugMessage();
+    $query = 'status=' . urlencode($status);
+    if ($debugMessage !== '') {
+        $query .= '&debug=' . rawurlencode(limitDebugMessage($debugMessage));
+    }
+
+    $location = REDIRECT_PATH . '?' . $query . '#' . REDIRECT_FRAGMENT;
     header('Location: ' . $location);
     exit;
+}
+
+function setDebugMessage(string $message): void
+{
+    $GLOBALS['mailer_debug'] = '[' . date('Y-m-d H:i:s') . '] ' . $message;
+}
+
+function getDebugMessage(): string
+{
+    return (string) ($GLOBALS['mailer_debug'] ?? '');
+}
+
+function limitDebugMessage(string $message): string
+{
+    if (strlen($message) <= DEBUG_QUERY_LIMIT) {
+        return $message;
+    }
+
+    return substr($message, 0, DEBUG_QUERY_LIMIT) . '...';
 }
 
 function cleanText(mixed $value): string
@@ -221,15 +263,19 @@ function sendMail(array $config): void
 
     try {
         sendSmtpMail($config);
+        setDebugMessage('SMTP autenticado envio correctamente.');
         return;
     } catch (Throwable $exception) {
         $errors[] = 'SMTP: ' . $exception->getMessage();
+        setDebugMessage('Fallo SMTP: ' . $exception->getMessage() . '. Se intenta mail() nativo.');
     }
 
     if (sendPhpMail($config)) {
+        setDebugMessage('SMTP fallo, pero mail() del servidor envio correctamente.');
         return;
     }
 
+    setDebugMessage('SMTP y mail() fallaron. ' . implode(' | ', $errors));
     throw new RuntimeException('No se pudo enviar el correo. ' . implode(' | ', $errors));
 }
 

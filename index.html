@@ -1123,7 +1123,6 @@
                     required>
                   <span class="captcha-hint">Pregunta de verificacion: cuanto es 4 + 3?</span>
                 </label>
-                <div class="form-note">Esto ayuda a bloquear envios automaticos.</div>
               </div>
               <div class="form-footer">
                 <p class="form-note">Respuesta orientativa en una primera conversacion para entender contexto y
@@ -1144,12 +1143,17 @@
     (() => {
       const params = new URLSearchParams(window.location.search);
       const status = params.get('status');
+      const mailerDebug = params.get('debug');
       const box = document.getElementById('form-status');
       const form = document.getElementById('contact-form');
       const renderedAt = document.getElementById('form_rendered_at');
 
       if (renderedAt) {
         renderedAt.value = Date.now().toString();
+      }
+
+      if (mailerDebug) {
+        console[status === 'success' ? 'info' : 'error']('[mailer]', mailerDebug);
       }
 
       if (!box || !form || !status) {
