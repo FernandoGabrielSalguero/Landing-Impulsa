@@ -660,6 +660,20 @@
       color: #8a2331;
     }
 
+    .captcha-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(160px, 220px);
+      gap: 1rem;
+      align-items: end;
+    }
+
+    .captcha-hint {
+      display: block;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
     footer {
       border-top: 1px solid rgba(17, 44, 78, .08);
       padding: 1.4rem 0 2rem;
@@ -780,6 +794,7 @@
 
       .flow-grid,
       .field-row,
+      .captcha-row,
       .impulsa-marks,
       .client-logos {
         grid-template-columns: 1fr;
@@ -1064,6 +1079,7 @@
             <div id="form-status" class="form-status" hidden aria-live="polite"></div>
             <form id="contact-form" action="mailer.php" method="post" accept-charset="UTF-8">
               <input type="hidden" name="form_source" value="landing-impulsa">
+              <input type="hidden" id="form_rendered_at" name="form_rendered_at" value="">
               <input type="text" name="website" tabindex="-1" autocomplete="off" hidden>
               <div class="field-row">
                 <label for="nombre">Nombre<input id="nombre" name="nombre" type="text" placeholder="Tu nombre"
@@ -1101,6 +1117,14 @@
                 <textarea id="mensaje" name="mensaje"
                   placeholder="Ejemplo: hoy tenemos informacion repartida en varias planillas y nos cuesta hacer seguimiento del trabajo."></textarea>
               </label>
+              <div class="captcha-row">
+                <label for="captcha">Captcha
+                  <input id="captcha" name="captcha" type="text" inputmode="numeric" placeholder="Tu respuesta"
+                    required>
+                  <span class="captcha-hint">Pregunta de verificacion: cuanto es 4 + 3?</span>
+                </label>
+                <div class="form-note">Esto ayuda a bloquear envios automaticos.</div>
+              </div>
               <div class="form-footer">
                 <p class="form-note">Respuesta orientativa en una primera conversacion para entender contexto y
                   prioridad.</p>
@@ -1122,6 +1146,11 @@
       const status = params.get('status');
       const box = document.getElementById('form-status');
       const form = document.getElementById('contact-form');
+      const renderedAt = document.getElementById('form_rendered_at');
+
+      if (renderedAt) {
+        renderedAt.value = Date.now().toString();
+      }
 
       if (!box || !form || !status) {
         return;
@@ -1130,6 +1159,7 @@
       const messages = {
         success: 'Gracias. Tu mensaje fue enviado y te responderemos a la brevedad.',
         invalid: 'Revisa los datos ingresados e intenta nuevamente.',
+        invalid_captcha: 'No pudimos validar el captcha. Resuelve la cuenta e intenta nuevamente.',
         error: 'No se pudo enviar el mensaje en este momento. Intenta nuevamente en unos minutos.'
       };
 

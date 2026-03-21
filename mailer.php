@@ -5,6 +5,9 @@ declare(strict_types=1);
 const CONTACT_RECIPIENT = 'info@impulsagroup.com';
 const REDIRECT_PATH = 'index.html';
 const REDIRECT_FRAGMENT = 'contacto';
+const CAPTCHA_EXPECTED = '7';
+const MIN_SUBMIT_SECONDS = 3;
+const MAX_SUBMIT_SECONDS = 7200;
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     redirectWithStatus('error');
@@ -13,6 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $honeypot = trim((string) ($_POST['website'] ?? ''));
 if ($honeypot !== '') {
     redirectWithStatus('success');
+}
+
+$renderedAt = (int) ($_POST['form_rendered_at'] ?? 0);
+$captcha = cleanText($_POST['captcha'] ?? '');
+$secondsSinceRendered = $renderedAt > 0 ? (int) floor((time() * 1000 - $renderedAt) / 1000) : 0;
+
+if (
+    $captcha !== CAPTCHA_EXPECTED ||
+    $renderedAt <= 0 ||
+    $secondsSinceRendered < MIN_SUBMIT_SECONDS ||
+    $secondsSinceRendered > MAX_SUBMIT_SECONDS
+) {
+    redirectWithStatus('invalid_captcha');
 }
 
 $nombre = cleanText($_POST['nombre'] ?? '');
@@ -39,11 +55,7 @@ try {
     $smtpPassword = requiredEnv($env, 'SMTP_PASSWORD');
     $smtpPort = (int) requiredEnv($env, 'SMTP_PORT');
 
-    $subject = 'Nuevo contacto desde la landing de Impulsa';
-    $textBody = buildTextBody($nombre, $empresa, $email, $telefono, $equipo, $objetivo, $mensaje);
-    $htmlBody = buildHtmlBody($nombre, $empresa, $email, $telefono, $equipo, $objetivo, $mensaje);
-
-    sendSmtpMail([
+    $mailData = [
         'host' => $smtpHost,
         'port' => $smtpPort,
         'username' => $smtpUser,
@@ -51,13 +63,15 @@ try {
         'from_email' => $smtpUser,
         'from_name' => 'Landing Impulsa',
         'to_email' => CONTACT_RECIPIENT,
+        'to_name' => 'Info Impulsa',
         'reply_to' => $email,
         'reply_to_name' => $nombre,
-        'subject' => $subject,
-        'text_body' => $textBody,
-        'html_body' => $htmlBody,
-    ]);
+        'subject' => 'Nuevo contacto desde la landing de Impulsa',
+        'text_body' => buildTextBody($nombre, $empresa, $email, $telefono, $equipo, $objetivo, $mensaje),
+        'html_body' => buildHtmlBody($nombre, $empresa, $email, $telefono, $equipo, $objetivo, $mensaje),
+    ];
 
+    sendMail($mailData);
     redirectWithStatus('success');
 } catch (Throwable $exception) {
     error_log('Mailer error: ' . $exception->getMessage());
@@ -201,90 +215,163 @@ function escapeHtml(string $value): string
     return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
-function sendSmtpMail(array $config): void
+function sendMail(array $config): void
 {
-    $transport = ((int) $config['port'] === 465 ? 'ssl://' : '') . $config['host'];
-    $socket = @stream_socket_client(
-        $transport . ':' . $config['port'],
-        $errorNumber,
-        $errorMessage,
-        15,
-        STREAM_CLIENT_CONNECT
-    );
+    $errors = [];
 
-    if (!is_resource($socket)) {
-        throw new RuntimeException("SMTP connection failed: {$errorMessage} ({$errorNumber})");
+    try {
+        sendSmtpMail($config);
+        return;
+    } catch (Throwable $exception) {
+        $errors[] = 'SMTP: ' . $exception->getMessage();
     }
 
-    stream_set_timeout($socket, 15);
+    if (sendPhpMail($config)) {
+        return;
+    }
+
+    throw new RuntimeException('No se pudo enviar el correo. ' . implode(' | ', $errors));
+}
+
+function sendPhpMail(array $config): bool
+{
+    $headers = buildMailHeaders($config);
+    $subject = decodeMimeHeader(encodeHeader((string) $config['subject']));
+    $body = buildMimeBody($config);
+    $params = '-f' . $config['from_email'];
+
+    return @mail((string) $config['to_email'], $subject, $body, $headers, $params);
+}
+
+function sendSmtpMail(array $config): void
+{
+    $socket = openSmtpSocket((string) $config['host'], (int) $config['port']);
+    stream_set_timeout($socket, 20);
 
     expectSmtp($socket, [220]);
-    sendSmtp($socket, 'EHLO ' . gethostnameOrDefault());
+    smtpCommand($socket, 'EHLO ' . getEhloDomain((string) $config['from_email']));
     expectSmtp($socket, [250]);
 
-    if ((int) $config['port'] !== 465) {
-        sendSmtp($socket, 'STARTTLS');
+    if ((int) $config['port'] === 587) {
+        smtpCommand($socket, 'STARTTLS');
         expectSmtp($socket, [220]);
 
         if (!stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
             throw new RuntimeException('Unable to enable TLS encryption');
         }
 
-        sendSmtp($socket, 'EHLO ' . gethostnameOrDefault());
+        smtpCommand($socket, 'EHLO ' . getEhloDomain((string) $config['from_email']));
         expectSmtp($socket, [250]);
     }
 
-    sendSmtp($socket, 'AUTH LOGIN');
+    smtpCommand($socket, 'AUTH LOGIN');
     expectSmtp($socket, [334]);
-    sendSmtp($socket, base64_encode((string) $config['username']));
+    smtpCommand($socket, base64_encode((string) $config['username']));
     expectSmtp($socket, [334]);
-    sendSmtp($socket, base64_encode((string) $config['password']));
+    smtpCommand($socket, base64_encode((string) $config['password']));
     expectSmtp($socket, [235]);
 
-    sendSmtp($socket, 'MAIL FROM:<' . $config['from_email'] . '>');
+    smtpCommand($socket, 'MAIL FROM:<' . $config['from_email'] . '>');
     expectSmtp($socket, [250]);
-    sendSmtp($socket, 'RCPT TO:<' . $config['to_email'] . '>');
+    smtpCommand($socket, 'RCPT TO:<' . $config['to_email'] . '>');
     expectSmtp($socket, [250, 251]);
-    sendSmtp($socket, 'DATA');
+    smtpCommand($socket, 'DATA');
     expectSmtp($socket, [354]);
 
-    fwrite($socket, buildMimeMessage($config) . "\r\n.\r\n");
+    fwrite($socket, buildSmtpMessage($config) . "\r\n.\r\n");
     expectSmtp($socket, [250]);
 
-    sendSmtp($socket, 'QUIT');
+    smtpCommand($socket, 'QUIT');
     fclose($socket);
 }
 
-function buildMimeMessage(array $config): string
+function openSmtpSocket(string $host, int $port)
 {
-    $boundary = 'b1_' . bin2hex(random_bytes(12));
-    $fromName = encodeHeader((string) $config['from_name']);
-    $replyToName = encodeHeader((string) $config['reply_to_name']);
-    $subject = encodeHeader((string) $config['subject']);
-    $textBody = normalizeSmtpBody((string) $config['text_body']);
-    $htmlBody = normalizeSmtpBody((string) $config['html_body']);
+    $remote = ($port === 465 ? 'ssl://' : 'tcp://') . $host . ':' . $port;
+    $context = stream_context_create([
+        'ssl' => [
+            'verify_peer' => true,
+            'verify_peer_name' => true,
+            'allow_self_signed' => false,
+            'crypto_method' => STREAM_CRYPTO_METHOD_TLS_CLIENT,
+            'SNI_enabled' => true,
+            'peer_name' => $host,
+        ],
+    ]);
 
+    $socket = @stream_socket_client(
+        $remote,
+        $errorNumber,
+        $errorMessage,
+        20,
+        STREAM_CLIENT_CONNECT,
+        $context
+    );
+
+    if (!is_resource($socket)) {
+        throw new RuntimeException("SMTP connection failed: {$errorMessage} ({$errorNumber})");
+    }
+
+    return $socket;
+}
+
+function buildSmtpMessage(array $config): string
+{
+    return dotStuff(buildMailHeaders($config) . "\r\n\r\n" . buildMimeBody($config));
+}
+
+function buildMailHeaders(array $config): string
+{
     $headers = [
-        'From: ' . $fromName . ' <' . $config['from_email'] . '>',
-        'To: <' . $config['to_email'] . '>',
-        'Reply-To: ' . $replyToName . ' <' . $config['reply_to'] . '>',
-        'Subject: ' . $subject,
+        'Date: ' . gmdate('D, d M Y H:i:s O'),
+        'Message-ID: <' . bin2hex(random_bytes(16)) . '@' . getEhloDomain((string) $config['from_email']) . '>',
+        'From: ' . encodeAddressHeader((string) $config['from_name'], (string) $config['from_email']),
+        'To: ' . encodeAddressHeader((string) ($config['to_name'] ?? ''), (string) $config['to_email']),
+        'Reply-To: ' . encodeAddressHeader((string) $config['reply_to_name'], (string) $config['reply_to']),
         'MIME-Version: 1.0',
-        'Content-Type: multipart/alternative; boundary="' . $boundary . '"',
+        'Content-Type: multipart/alternative; boundary="' . getBoundary() . '"',
+        'X-Mailer: PHP/' . PHP_VERSION,
     ];
 
-    $body = implode("\r\n", $headers)
-        . "\r\n\r\n--{$boundary}\r\n"
-        . "Content-Type: text/plain; charset=UTF-8\r\n"
-        . "Content-Transfer-Encoding: 8bit\r\n\r\n"
-        . $textBody
-        . "\r\n--{$boundary}\r\n"
-        . "Content-Type: text/html; charset=UTF-8\r\n"
-        . "Content-Transfer-Encoding: 8bit\r\n\r\n"
-        . $htmlBody
-        . "\r\n--{$boundary}--";
+    return implode("\r\n", $headers);
+}
 
-    return dotStuff($body);
+function buildMimeBody(array $config): string
+{
+    $boundary = getBoundary();
+    $textBody = chunk_split(base64_encode(normalizeSmtpBody((string) $config['text_body'])));
+    $htmlBody = chunk_split(base64_encode(normalizeSmtpBody((string) $config['html_body'])));
+
+    return '--' . $boundary . "\r\n"
+        . "Content-Type: text/plain; charset=UTF-8\r\n"
+        . "Content-Transfer-Encoding: base64\r\n\r\n"
+        . $textBody
+        . '--' . $boundary . "\r\n"
+        . "Content-Type: text/html; charset=UTF-8\r\n"
+        . "Content-Transfer-Encoding: base64\r\n\r\n"
+        . $htmlBody
+        . '--' . $boundary . "--";
+}
+
+function getBoundary(): string
+{
+    static $boundary = null;
+
+    if ($boundary === null) {
+        $boundary = 'b1_' . bin2hex(random_bytes(12));
+    }
+
+    return $boundary;
+}
+
+function encodeAddressHeader(string $name, string $email): string
+{
+    $name = trim($name);
+    if ($name === '') {
+        return '<' . $email . '>';
+    }
+
+    return encodeHeader($name) . ' <' . $email . '>';
 }
 
 function normalizeSmtpBody(string $body): string
@@ -305,7 +392,16 @@ function encodeHeader(string $value): string
     return '=?UTF-8?B?' . base64_encode($value) . '?=';
 }
 
-function sendSmtp($socket, string $command): void
+function decodeMimeHeader(string $value): string
+{
+    if (function_exists('mb_decode_mimeheader')) {
+        return mb_decode_mimeheader($value);
+    }
+
+    return $value;
+}
+
+function smtpCommand($socket, string $command): void
 {
     fwrite($socket, $command . "\r\n");
 }
@@ -333,9 +429,10 @@ function expectSmtp($socket, array $expectedCodes): string
     return $response;
 }
 
-function gethostnameOrDefault(): string
+function getEhloDomain(string $email): string
 {
-    $hostname = gethostname();
+    $parts = explode('@', $email);
+    $domain = $parts[1] ?? '';
 
-    return is_string($hostname) && $hostname !== '' ? $hostname : 'localhost';
+    return $domain !== '' ? $domain : 'localhost';
 }
