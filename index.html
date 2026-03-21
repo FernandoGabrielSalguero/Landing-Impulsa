@@ -640,6 +640,26 @@
       margin-top: .2rem;
     }
 
+    .form-status {
+      margin: 0 0 1rem;
+      padding: .95rem 1rem;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      line-height: 1.6;
+    }
+
+    .form-status-success {
+      background: rgba(46, 179, 186, .12);
+      border-color: rgba(46, 179, 186, .24);
+      color: #11656a;
+    }
+
+    .form-status-error {
+      background: rgba(180, 52, 70, .1);
+      border-color: rgba(180, 52, 70, .2);
+      color: #8a2331;
+    }
+
     footer {
       border-top: 1px solid rgba(17, 44, 78, .08);
       padding: 1.4rem 0 2rem;
@@ -1041,7 +1061,10 @@
           <div class="form-card fade-up delay-2">
             <h3>Solicitar contacto</h3>
             <p class="form-note">Dejanos tus datos y una breve descripcion del desafio que queres resolver.</p>
-            <form>
+            <div id="form-status" class="form-status" hidden aria-live="polite"></div>
+            <form id="contact-form" action="mailer.php" method="post" accept-charset="UTF-8">
+              <input type="hidden" name="form_source" value="landing-impulsa">
+              <input type="text" name="website" tabindex="-1" autocomplete="off" hidden>
               <div class="field-row">
                 <label for="nombre">Nombre<input id="nombre" name="nombre" type="text" placeholder="Tu nombre"
                     required></label>
@@ -1093,6 +1116,37 @@
       <div class="container">Todos los derechos reservados 2026</div>
     </footer>
   </div>
+  <script>
+    (() => {
+      const params = new URLSearchParams(window.location.search);
+      const status = params.get('status');
+      const box = document.getElementById('form-status');
+      const form = document.getElementById('contact-form');
+
+      if (!box || !form || !status) {
+        return;
+      }
+
+      const messages = {
+        success: 'Gracias. Tu mensaje fue enviado y te responderemos a la brevedad.',
+        invalid: 'Revisa los datos ingresados e intenta nuevamente.',
+        error: 'No se pudo enviar el mensaje en este momento. Intenta nuevamente en unos minutos.'
+      };
+
+      const message = messages[status];
+      if (!message) {
+        return;
+      }
+
+      box.textContent = message;
+      box.hidden = false;
+      box.classList.add(status === 'success' ? 'form-status-success' : 'form-status-error');
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      const cleanUrl = `${window.location.pathname}${window.location.hash || '#contacto'}`;
+      window.history.replaceState({}, document.title, cleanUrl);
+    })();
+  </script>
 </body>
 
 </html>
